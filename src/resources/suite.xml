@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My test suite1" parallel="classes" thread-count="1">
+    <test verbose="1" name="bookingComtests">
+        <classes>
+            <class name="test.BookingComHotels"></class>
+            <!--<class name="test.WorkUaLoginTest"></class>-->
+        </classes>
+    </test>
+</suite>
