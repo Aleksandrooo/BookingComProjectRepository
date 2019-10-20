@@ -32,7 +32,7 @@ public class SearchResultsHotelsPage {
         return strList;
     }
 
-    public searchResultsHotelsPage(WebDriver webDriver) {
+    public SearchResultsHotelsPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
     }
