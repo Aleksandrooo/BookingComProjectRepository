@@ -26,7 +26,7 @@ public class BookingComHotels {
     }
 
     @Test
-    public  void twoAdultSearchTest(){
+    public  void twoAdultSearchTest() throws InterruptedException {
         SearchHotelPage  searchHotel = new SearchHotelPage(webDriver);
         int numberOfNight = 3;
         int numberOfAdults = 2;
@@ -40,11 +40,12 @@ public class BookingComHotels {
 
     }
 
-    private void checkResult(int numberOfNight, int numberOfAdults) {
+    private void checkResult(int numberOfNight, int numberOfAdults) throws InterruptedException {
+        Thread.sleep(5000);
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         List<String> nightAndPeopleList =  searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
         for (String str:nightAndPeopleList){
-            Assert.assertEquals(str,"Цена за " + numberOfNight + " ночи, " + numberOfAdults +" взрослых", "nightAndPeopleList");
+            Assert.assertEquals(str,numberOfNight + " ночи, " + numberOfAdults +" взрослых", "nightAndPeopleList");
         }
     }
 
