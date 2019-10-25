@@ -3,7 +3,8 @@
 <suite name="My test suite1" parallel="classes" thread-count="1">
     <test verbose="1" name="bookingComtests">
         <classes>
-            <class name="test.BookingComHotels"></class>
+            <!--<class name="test.BookingComHotels"></class>-->
+            <class name="test.BookingComSignInTest"></class>
             <!--<class name="test.WorkUaLoginTest"></class>-->
         </classes>
     </test>

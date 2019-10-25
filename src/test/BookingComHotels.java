@@ -50,8 +50,5 @@ public class BookingComHotels {
     }
 
 
-    @AfterTest
-    public void AfterSuite() {
-     //   webDriver.quit();
-    }
+
 }
