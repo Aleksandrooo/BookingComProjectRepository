@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.w3c.dom.html.HTMLInputElement;
 
 public class SearchHotelPage {
     public WebDriver webDriver;
@@ -22,6 +23,12 @@ public class SearchHotelPage {
 
     @FindBy(xpath = ".//button[@data-sb-id='main']")
     public WebElement searchOffersButtonElement;
+
+    @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[1]")
+    public WebElement registerButtonElement;
+
+    @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[2]")
+    public WebElement signInButtonElement;
 
 //    @FindBy(xpath = ".//*[@class='btn btn-default btn-block' and @type='submit']")
 //    public WebElement inputButtonElement;
@@ -60,6 +67,14 @@ public class SearchHotelPage {
 
     public void clickSearchOffersButton() {
         searchOffersButtonElement.click();
+    }
+
+    public void clickRegisterButton() {
+        registerButtonElement.click();
+    }
+
+    public void clickSighInButton() {
+        signInButtonElement.click();
     }
 
     public SearchHotelPage(WebDriver webDriver) {

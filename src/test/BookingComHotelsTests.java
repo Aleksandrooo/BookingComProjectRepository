@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 //import test.Pages.SearchHotelPage;
 
-public class BookingComHotels {
+public class BookingComHotelsTests {
     WebDriver webDriver;
 
     @BeforeSuite
