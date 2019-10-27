@@ -7,9 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
@@ -26,7 +24,7 @@ public class BookingComSignInTests {
 
     WebDriver webDriver;
 
-    @BeforeSuite
+    @BeforeMethod
     public void beforeSuite(){
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
@@ -100,9 +98,9 @@ public class BookingComSignInTests {
         return image;
     }
 
-    @AfterTest
+    @AfterMethod
     public void AfterSuite() {
-         //  webDriver.quit();
+        webDriver.quit();
     }
 
 
