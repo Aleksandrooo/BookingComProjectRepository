@@ -46,11 +46,15 @@ public class BookingComHotelsTests {
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
         for (String str : nightAndPeopleList) {
-            Assert.assertEquals(str, numberOfNight + " ночи, " + numberOfAdults + " взрослых", "nightAndPeopleList");
+            String[] strArray = str.split(",");
+            String night = strArray[0].substring(0, 2).trim();
+            String adult = strArray[1].substring(0, 3).trim();
+            Assert.assertEquals(Integer.parseInt(night), numberOfNight, "nightAndPeopleList");
+            Assert.assertEquals(Integer.parseInt(adult), numberOfAdults, "nightAndPeopleList");
         }
     }
 
-    @Test(dataProvider = "searchOptions")
+    @Test (dataProvider = "searchOptions")
     public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.putValueInsearchInputElementField(direction);
@@ -63,19 +67,17 @@ public class BookingComHotelsTests {
 //        searchHotel.setNumberOfRooms(rooms);
         searchHotel.clickSearchOffersButton();
         checkResult(nights, adults);
-
-
     }
 
     @DataProvider(name = "searchOptions")
     public Object[][] testData1() {
-        LocalDateTime checkIn = LocalDateTime.now();
+        LocalDateTime nowDate = LocalDateTime.now();
 
         return new Object[][]{
-                {"Прага", checkIn.plusDays(20).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), checkIn.plusDays(5).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 5, 3, "", 1},
-                {"Прага", checkIn.plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), checkIn.plusDays(2).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 2, 1, "", 1},
-                {"Прага", checkIn.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), checkIn.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 15, 2, "", 1},
-                {"Прага", checkIn.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), checkIn.plusDays(3).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 3, 1, "", 2},
+                {"Прага", nowDate.plusDays(20).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(25).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 5, 3, "", 1},
+                {"Прага", nowDate.plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(3).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 2, 1, "", 1},
+                {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(30).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 15, 2, "", 1},
+                {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(18).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 3, 1, "", 2},
         };
 
     }
