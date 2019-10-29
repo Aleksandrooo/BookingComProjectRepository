@@ -27,7 +27,7 @@ public class BookingComHotelsTests {
     }
 
     @Test
-    public void twoAdultSearchTest() throws InterruptedException {
+    public void checkFiltersOnSearchResultPageTest() throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         int numberOfNight = 3;
         int numberOfAdults = 2;

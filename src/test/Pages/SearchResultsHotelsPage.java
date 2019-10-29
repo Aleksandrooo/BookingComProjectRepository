@@ -19,6 +19,10 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
 
+
+    //filters
+    //(.//*[@class='filtercategory-title'])[1]/*[@class='bui-checkbox__label filter_item css-checkbox']
+
 //    @FindBy(xpath = ".//div[@id='search_results_table']")
 //    public WebElement searchResultsTableElement;
 

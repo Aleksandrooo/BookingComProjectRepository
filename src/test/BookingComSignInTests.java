@@ -7,10 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
+import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
 import test.Pages.BCSignInPage;
 
 import javax.imageio.ImageIO;
@@ -35,8 +38,9 @@ public class BookingComSignInTests {
  //   @Test
     public void checkSighInLayoutPage() throws InterruptedException {
         AShot aShot = new AShot();
+        aShot.coordsProvider(new WebDriverCoordsProvider());
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
-        Thread.sleep(5000);
+       // Thread.sleep(5000);
         WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
@@ -104,30 +108,31 @@ public class BookingComSignInTests {
     }
 
 
-//    @Test
-//    public void screenCompare() {
-//   //     Allure.label("testType", "screenshotDiff"); // Для красивых репортов.
-////        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-//        WebDriver webDriver = new ChromeDriver();
-//        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-////        webDriver.get("https://account.booking.com/sign-in/");
+   // @Test
+    public void screenCompare() {
+        Allure.label("testType", "screenshotDiff"); // Для красивых репортов.
+//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+        webDriver.get("https://account.booking.com/sign-in/");
 //        webDriver.get("https://www.seleniumhq.org/");
-////        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
-////        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel__header-logo']"));
+        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
+//        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel__header-logo']"));
 //        WebElement el = webDriver.findElement(By.xpath(".//*[@id='choice']"));
-////        WebElement el = webDriver.findElement(By.id("choice"));
-//        AShot aShot = new AShot();
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
-//        BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
-//        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
-//        int difSize = diffImage.getDiffSize();
-////        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-////        atttAchScreenshatToAllureReport(actual, "actual");
-////        atttAchScreenshatToAllureReport(expected, "expected");
-////        atttAchScreenshatToAllureReport(diff, "diff");
-////        Assert.assertTrue(difSize < 1);
-//        webDriver.quit();
-//    }
+//        WebElement el = webDriver.findElement(By.id("choice"));
+        AShot aShot = new AShot();
+        aShot.coordsProvider(new WebDriverCoordsProvider());
+        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
+        BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
+        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
+        int difSize = diffImage.getDiffSize();
+//        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
+//        atttAchScreenshatToAllureReport(actual, "actual");
+//        atttAchScreenshatToAllureReport(expected, "expected");
+//        atttAchScreenshatToAllureReport(diff, "diff");
+//        Assert.assertTrue(difSize < 1);
+        webDriver.quit();
+    }
 
     @Attachment(value = "{filename}", type = "image/png")
     public byte[] atttAchScreenshatToAllureReport(BufferedImage screenshot, String filename) {
