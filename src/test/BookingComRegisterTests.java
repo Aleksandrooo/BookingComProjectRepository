@@ -9,10 +9,14 @@ import org.testng.annotations.*;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
+import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
 import test.Pages.BCRegisterPage;
 import test.Pages.SearchHotelPage;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BookingComRegisterTests extends BaseTest {
@@ -26,22 +30,27 @@ public class BookingComRegisterTests extends BaseTest {
         webDriver.manage().window().maximize();
     }
 
-  //  @Test
-    public void checkSighInLayoutPage() throws InterruptedException {
+    @Test
+    public void checkSighInLayoutPage() throws InterruptedException, IOException {
         AShot aShot = new AShot();
+        aShot.coordsProvider(new WebDriverCoordsProvider());
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.clickRegisterButton();
-        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
+        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
+//        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
 
-        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, BCRegisterPage.getRegisterPageShotElement()).getImage();
+//        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
+        BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
         BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
+        File outputfile = new File("src/resources/actual/RegisterPage.png");
+        ImageIO.write(actual, "png", outputfile);
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
+
         int difSize = diffImage.getDiffSize();
-        //       BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-//        atttAchScreenshatToAllureReport(actual, "actual");
-//        atttAchScreenshatToAllureReport(expected, "expected");
-//        atttAchScreenshatToAllureReport(diff, "diff");
+        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
+        atttAchScreenshatToAllureReport(actual, "actual");
+        atttAchScreenshatToAllureReport(expected, "expected");
+        atttAchScreenshatToAllureReport(diff, "diff");
         Assert.assertTrue(difSize < 1);
     }
 

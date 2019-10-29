@@ -35,23 +35,26 @@ public class BookingComSignInTests {
         webDriver.manage().window().maximize();
     }
 
- //   @Test
-    public void checkSighInLayoutPage() throws InterruptedException {
+    @Test
+    public void checkSighInLayoutPage() throws InterruptedException, IOException {
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
        // Thread.sleep(5000);
-        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
-
-        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, bcSignInPage.getSignInPageShotElement()).getImage();
+//        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
+//
+//        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
+        BufferedImage actual = aShot.takeScreenshot(webDriver, bcSignInPage.getSignInPageShotElement()).getImage();
         BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
+        File outputfile = new File("src/resources/actual/SighInPage.png");
+        ImageIO.write(actual, "png", outputfile);
+
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
         int difSize = diffImage.getDiffSize();
- //       BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-//        atttAchScreenshatToAllureReport(actual, "actual");
-//        atttAchScreenshatToAllureReport(expected, "expected");
-//        atttAchScreenshatToAllureReport(diff, "diff");
+        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
+        atttAchScreenshatToAllureReport(actual, "actual");
+        atttAchScreenshatToAllureReport(expected, "expected");
+        atttAchScreenshatToAllureReport(diff, "diff");
         Assert.assertTrue(difSize < 1);
     }
 
