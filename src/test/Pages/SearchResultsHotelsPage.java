@@ -22,6 +22,7 @@ public class SearchResultsHotelsPage {
 
     //filters
     //(.//*[@class='filtercategory-title'])[1]/*[@class='bui-checkbox__label filter_item css-checkbox']
+    //.//*[@data-id='filter_price']//*[@class='bui-checkbox__label filter_item css-checkbox']
 
 //    @FindBy(xpath = ".//div[@id='search_results_table']")
 //    public WebElement searchResultsTableElement;

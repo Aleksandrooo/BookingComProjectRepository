@@ -4,8 +4,8 @@
     <test verbose="1" name="bookingComTests">
         <classes>
             <!--<class name="test.BookingComHotelsTests"></class>-->
-<!--            <class name="test.BookingComSignInTests"></class>-->
-            <class name="test.BookingComRegisterTests"></class>
+            <class name="test.BookingComSignInTests"></class>
+            <!--<class name="test.BookingComRegisterTests"></class>-->
         </classes>
     </test>
 </suite>

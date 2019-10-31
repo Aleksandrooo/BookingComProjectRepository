@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
@@ -15,6 +14,7 @@ import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
 import test.Pages.BCSignInPage;
+import test.Pages.SearchHotelPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -23,27 +23,34 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class BookingComSignInTests {
+public class BookingComSignInTests extends BaseTest{
 
-    WebDriver webDriver;
+//    WebDriver webDriver;
+//
+//    @BeforeMethod
+//    public void beforeSuite(){
+//        webDriver = new ChromeDriver();
+//        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+//        webDriver.get("https://account.booking.com/sign-in");
+//        webDriver.manage().window().maximize();
+//    }
 
     @BeforeMethod
-    public void beforeSuite(){
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-        webDriver.get("https://account.booking.com/sign-in");
-        webDriver.manage().window().maximize();
+    public void beforeMethod(){
+        webDriver.manage().deleteAllCookies();
+        webDriver.get(BASE_APP_URL);
     }
+
 
     @Test
     public void checkSighInLayoutPage() throws InterruptedException, IOException {
+
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickSighInButton();
+        BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
+
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
-        BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
-       // Thread.sleep(5000);
-//        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
-//
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
         BufferedImage actual = aShot.takeScreenshot(webDriver, bcSignInPage.getSignInPageShotElement()).getImage();
         BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
         File outputfile = new File("src/resources/actual/SighInPage.png");
@@ -60,6 +67,8 @@ public class BookingComSignInTests {
 
     @Test
     public void checkPutEmptiLogin(){
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickSighInButton();
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
         bcSignInPage.clicksubmitButton();
         String message = bcSignInPage.getValueFromUsernameErrorElement();
@@ -69,6 +78,8 @@ public class BookingComSignInTests {
 
     @Test
     public void signInWithWrongLogin(){
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickSighInButton();
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
         bcSignInPage.putValueInputUsernameElementField("123");
         bcSignInPage.clicksubmitButton();
@@ -79,6 +90,8 @@ public class BookingComSignInTests {
 
     @Test
     public void signInWithCorrectEmail(){
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickSighInButton();
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
         bcSignInPage.putValueInputUsernameElementField("av-pochta-j@ukr.net");
         bcSignInPage.clicksubmitButton();
@@ -89,6 +102,8 @@ public class BookingComSignInTests {
 
     @Test
     public void checkLinkToRegisterForm(){
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickSighInButton();
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
         bcSignInPage.clickLinkRegisterPageElement();
         WebElement element = webDriver.findElement(By.xpath(".//*[@class='bui_font_display_two bui_font_heading--bold bui-spacer--medium nw-step-header']"));
@@ -105,10 +120,7 @@ public class BookingComSignInTests {
         return image;
     }
 
-    @AfterMethod
-    public void AfterSuite() {
-        webDriver.quit();
-    }
+
 
 
    // @Test

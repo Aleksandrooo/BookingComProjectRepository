@@ -1,11 +1,10 @@
 package test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import io.qameta.allure.Allure;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
@@ -17,21 +16,26 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class BookingComRegisterTests extends BaseTest {
-    WebDriver webDriver;
+   // WebDriver webDriver;
+
+//    @BeforeMethod
+//    public void beforeSuite(){
+//        webDriver = new ChromeDriver();
+//        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+//        webDriver.get(BASE_APP_URL);
+//        webDriver.manage().window().maximize();
+//    }
 
     @BeforeMethod
-    public void beforeSuite(){
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-        webDriver.get("https://www.booking.com/");
-        webDriver.manage().window().maximize();
+    public void beforeMethed(){
+        webDriver.manage().deleteAllCookies();
     }
 
     @Test
     public void checkSighInLayoutPage() throws InterruptedException, IOException {
+        Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
