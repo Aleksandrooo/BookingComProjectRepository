@@ -2,7 +2,6 @@ package test;
 
 import io.qameta.allure.Allure;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
@@ -92,8 +91,8 @@ public class BookingComRegisterTests extends BaseTest {
         Assert.assertTrue(bcRegisterPage.getConfirmedPasswordElement().isDisplayed(), "getConfirmedPasswordElement");
     }
 
-    @AfterMethod
-    public void AfterSuite() {
-          webDriver.quit();
-    }
+//    @AfterMethod
+//    public void AfterSuite() {
+//          webDriver.quit();
+//    }
 }

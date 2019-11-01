@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    public static final String BASE_APP_URL = "https://www.booking.com/";
+    public static final String BASE_APP_URL = "https://www.booking.com/index.ru.html";
 
     WebDriver webDriver;
 

@@ -13,8 +13,8 @@ public class SearchResultsHotelsPage {
 
     public WebDriver webDriver;
 
-    @FindBy(xpath = ".//div[@id='search_results_table']")
-    public WebElement searchResultsTableElement;
+//    @FindBy(xpath = ".//div[@id='search_results_table']")
+//    public WebElement searchResultsTableElement;
 
     @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
@@ -28,6 +28,15 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//*[@id='filter_distance']//*[@class='bui-checkbox__label filter_item css-checkbox']")
     public List<WebElement> filterDistanceElementsList;
 
+    @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
+    public List<WebElement> priceRoomElementsList;
+
+    @FindBy(xpath = ".//*[@class='sr-hotel__title-badges']/i/span")
+    public List<WebElement> hotelStarsElementsList;
+
+    @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
+    public WebElement distanseToCenterElement;
+
     public List<String> clickChekboxFilterPrice(int numberOfFilter) {
         budgetFilterElementsList.get(numberOfFilter).click();
         List<String> strList = new ArrayList<>();
@@ -36,6 +45,14 @@ public class SearchResultsHotelsPage {
             strList.add(NumberOfPeapleAndNignts);
         }
         return strList;
+    }
+
+    public List<Integer> getPriceOfRooms(){
+        List<Integer> pricesList = new ArrayList<>();
+        for (WebElement element:priceRoomElementsList){
+            pricesList.add(Integer.valueOf(element.getText().substring(3)));
+        }
+        return pricesList;
     }
 
 

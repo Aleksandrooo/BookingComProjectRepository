@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 //import test.Pages.SearchHotelPage;
 
-public class BookingComHotelsTests {
+public class BookingComHotelsTests  extends BaseTest{
     WebDriver webDriver;
 
     @BeforeMethod

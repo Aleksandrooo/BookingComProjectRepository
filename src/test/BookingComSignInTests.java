@@ -1,11 +1,7 @@
 package test;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,10 +14,8 @@ import test.Pages.SearchHotelPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class BookingComSignInTests extends BaseTest{
 
@@ -110,59 +104,31 @@ public class BookingComSignInTests extends BaseTest{
         Assert.assertTrue(element.isDisplayed());
     }
 
-    public BufferedImage getBufferedImageFromFile(String fullPath) {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(new File(fullPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
-    }
-
-
-
-
-   // @Test
-    public void screenCompare() {
-        Allure.label("testType", "screenshotDiff"); // Для красивых репортов.
-//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-        WebDriver webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-        webDriver.get("https://account.booking.com/sign-in/");
-//        webDriver.get("https://www.seleniumhq.org/");
-        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
-//        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel__header-logo']"));
-//        WebElement el = webDriver.findElement(By.xpath(".//*[@id='choice']"));
-//        WebElement el = webDriver.findElement(By.id("choice"));
-        AShot aShot = new AShot();
-        aShot.coordsProvider(new WebDriverCoordsProvider());
-        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
-        BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
-        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
-        int difSize = diffImage.getDiffSize();
-//        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-//        atttAchScreenshatToAllureReport(actual, "actual");
-//        atttAchScreenshatToAllureReport(expected, "expected");
-//        atttAchScreenshatToAllureReport(diff, "diff");
-//        Assert.assertTrue(difSize < 1);
-        webDriver.quit();
-    }
-
-    @Attachment(value = "{filename}", type = "image/png")
-    public byte[] atttAchScreenshatToAllureReport(BufferedImage screenshot, String filename) {
-        byte[] imageInByte = new byte[0];
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(screenshot, "png", baos);
-            baos.flush();
-            imageInByte = baos.toByteArray();
-            baos.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return imageInByte;
-    }
+//    public BufferedImage getBufferedImageFromFile(String fullPath) {
+//        BufferedImage image = null;
+//        try {
+//            image = ImageIO.read(new File(fullPath));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return image;
+//    }
+//
+//
+//    @Attachment(value = "{filename}", type = "image/png")
+//    public byte[] atttAchScreenshatToAllureReport(BufferedImage screenshot, String filename) {
+//        byte[] imageInByte = new byte[0];
+//        try {
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            ImageIO.write(screenshot, "png", baos);
+//            baos.flush();
+//            imageInByte = baos.toByteArray();
+//            baos.close();
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return imageInByte;
+//    }
 
 
 
