@@ -37,20 +37,20 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
     public WebElement distanseToCenterElement;
 
-    public List<String> clickChekboxFilterPrice(int numberOfFilter) {
+    public void clickChekboxFilterPrice(int numberOfFilter) {
         budgetFilterElementsList.get(numberOfFilter).click();
-        List<String> strList = new ArrayList<>();
-        for (WebElement el : this.hotelSearchResultsTableElement) {
-            String NumberOfPeapleAndNignts = el.findElement(By.xpath(".//*[@class='bui-price-display__label prco-inline-block-maker-helper']")).getText();
-            strList.add(NumberOfPeapleAndNignts);
-        }
-        return strList;
+//        List<String> strList = new ArrayList<>();
+////        for (WebElement el : this.hotelSearchResultsTableElement) {
+////            String NumberOfPeapleAndNignts = el.findElement(By.xpath(".//*[@class='bui-price-display__label prco-inline-block-maker-helper']")).getText();
+////            strList.add(NumberOfPeapleAndNignts);
+////        }
+////        return strList;
     }
 
     public List<Integer> getPriceOfRooms(){
         List<Integer> pricesList = new ArrayList<>();
         for (WebElement element:priceRoomElementsList){
-            pricesList.add(Integer.valueOf(element.getText().substring(3)));
+            pricesList.add(Integer.valueOf(element.getText().substring(3).replaceAll("\\s","")));
         }
         return pricesList;
     }

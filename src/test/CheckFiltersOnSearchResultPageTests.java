@@ -25,15 +25,12 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.putValueInsearchInputElementField("Прага");
         searchHotel.clickSelectSearchDirection();
         searchHotel.clickCheck_inDate("2019-12-14");
-        searchHotel.clickCheck_outDate("2019-12-17");
+        searchHotel.clickCheck_outDate("2019-12-15");
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
-        searchResultsHotelsPage.clickChekboxFilterPrice(1);
-        Thread.sleep(2000);
-
+        searchResultsHotelsPage.clickChekboxFilterPrice(0);
+        Thread.sleep(5000);
         List<Integer> pricesList=searchResultsHotelsPage.getPriceOfRooms();
-
-
         checkPriceResult(0, 50, pricesList);
 
 

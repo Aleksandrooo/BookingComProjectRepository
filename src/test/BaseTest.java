@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import test.Pages.SearchHotelPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -25,11 +26,14 @@ public class BaseTest {
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         webDriver.get(BASE_APP_URL);
         webDriver.manage().window().maximize();
+        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+        searchHotelPage.setEurCurrency();
+        searchHotelPage.setLanguage("uk");
     }
 
     @AfterTest
     public void AfterSuite() {
-        webDriver.quit();
+      //  webDriver.quit();
     }
 
     public BufferedImage getBufferedImageFromFile(String fullPath) {

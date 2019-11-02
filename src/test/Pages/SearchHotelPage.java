@@ -51,6 +51,56 @@ public class SearchHotelPage {
     @FindBy(xpath = "((.//*[@class='sb-group__field sb-group__field-rooms']/div/div)[2]/button)[2]")
     public WebElement roomsCountPlusElement;
 
+//    @FindBy(xpath = ".//li[@class='user_center_option uc_currency js-uc-currency']")
+    @FindBy(xpath = ".//*[@data-id='currency_selector']")
+    public WebElement selectedCurrencyElement;
+
+//    @FindBy(xpath = ".//li[@class='user_center_option uc_currency js-uc-currency']/input")
+//    @FindBy(xpath = ".//li[@class='user_center_option uc_currency js-uc-currency']/input")
+//    public WebElement selectedCurrency;
+
+    //    @FindBy(xpath = "string(.//*[@data-id='currency_selector']/input/@value)")
+//    public String selectedCurrency;
+
+    @FindBy(xpath = ".//a[@data-currency='EUR']")
+    public WebElement selectEURElement;
+
+//    @FindBy(xpath = ".//li[@data-id='language_selector']/a/img/@alt")
+//    public WebElement selectedLanguageElement;
+
+    @FindBy(xpath = ".//li[@data-id='language_selector']")
+    public WebElement selectedLanguageElement;
+
+    @FindBy(xpath = ".//a[@hreflang='uk']")
+    public WebElement selectUkrLanguageElement;
+
+    public void  setEurCurrency(){
+        selectedCurrencyElement.click();
+        selectEURElement.click();
+    }
+
+//    public void  setEurCurrency(){
+//        String str;
+//        str = selectedCurrency.getAttribute("value");
+//        if (!selectedCurrency.equals("EUR")) {
+//            selectedCurrencyElement.click();
+//            selectEURElement.click();
+//        }
+//    }
+
+//    public void setUkrLanguage() {
+//        if (!selectedLanguageElement.findElement("string()").equals("Українською")) {
+//            setLanguage("uk");
+////            selectedLanguageElement.click();
+////            selectUkrLanguageElement.click();
+//        }
+//    }
+
+    public void setLanguage(String languageCode) {
+        selectedLanguageElement.click();
+        WebElement selectUkrLanguageElement = webDriver.findElement(By.xpath(".//a[@hreflang='" + languageCode + "']"));
+        selectUkrLanguageElement.click();
+    }
 
     public void putValueInsearchInputElementField(String value) {
         searchInputElement.sendKeys(value);
@@ -89,14 +139,16 @@ public class SearchHotelPage {
 
     public void setGuestCountOptionsElement(int adults, String children, int rooms) throws InterruptedException {
         guestCountOptionsElement.click();
-        if(adults == 1){ adultCountMinusElement.click();}
-        if(adults >= 3){
-            for(int i=2; i< adults; i++){
+        if (adults == 1) {
+            adultCountMinusElement.click();
+        }
+        if (adults >= 3) {
+            for (int i = 2; i < adults; i++) {
                 adultCountPlusElement.click();
                 Thread.sleep(1000);
             }
         }
-        if(rooms >=2)for(int i=1; i< adults; i++){
+        if (rooms >= 2) for (int i = 1; i < adults; i++) {
             roomsCountPlusElement.click();
             Thread.sleep(1000);
         }
