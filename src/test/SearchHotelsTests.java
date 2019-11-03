@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -15,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 
 //import test.Pages.SearchHotelPage;
 
-public class BookingComHotelsTests  extends BaseTest{
+public class SearchHotelsTests extends BaseTest {
     WebDriver webDriver;
 
     @BeforeMethod
-    public void beforeTest() throws InterruptedException {
+    public void beforeMethod() throws InterruptedException {
         webDriver.manage().deleteAllCookies();
         webDriver.get(BASE_APP_URL);
         SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
@@ -33,21 +34,33 @@ public class BookingComHotelsTests  extends BaseTest{
 //        webDriver.manage().window().maximize();
 //    }
 
-    @Test
-    public void checkFiltersOnSearchResultPageTest() throws InterruptedException {
+    //    @Test
+//    public void checkFiltersOnSearchResultPageTest() throws InterruptedException {
+//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+//        int numberOfNight = 3;
+//        int numberOfAdults = 2;
+//        searchHotel.selectSearchDirection("Прага");
+//        searchHotel.clickSelectSearchDirection();
+//        searchHotel.clickCheck_inDate("2019-11-14");
+//        searchHotel.clickCheck_outDate("2019-11-17");
+//        searchHotel.clickSearchOffersButton();
+//        checkResult(numberOfNight, numberOfAdults);
+//
+//
+//    }
+    @Test(dataProvider = "searchOptions")
+    public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        int numberOfNight = 3;
-        int numberOfAdults = 2;
-        searchHotel.selectSearchDirection("Прага");
+        searchHotel.selectSearchDirection(direction);
         searchHotel.clickSelectSearchDirection();
-        searchHotel.clickCheck_inDate("2019-11-14");
-        searchHotel.clickCheck_outDate("2019-11-17");
+        searchHotel.clickCheck_inDate(checkIn);
+        searchHotel.clickCheck_outDate(ckeckOut);
+        searchHotel.setGuestCountOptionsElement(adults, children, rooms);
         searchHotel.clickSearchOffersButton();
-        checkResult(numberOfNight, numberOfAdults);
-
-
+        checkResult(nights, adults);
     }
 
+    @Step
     private void checkResult(int numberOfNight, int numberOfAdults) throws InterruptedException {
         Thread.sleep(5000);
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
@@ -59,21 +72,6 @@ public class BookingComHotelsTests  extends BaseTest{
             Assert.assertEquals(Integer.parseInt(night), numberOfNight, "nightAndPeopleList");
             Assert.assertEquals(Integer.parseInt(adult), numberOfAdults, "nightAndPeopleList");
         }
-    }
-
-    @Test (dataProvider = "searchOptions")
-    public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {
-        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        searchHotel.selectSearchDirection(direction);
-        searchHotel.clickSelectSearchDirection();
-        searchHotel.clickCheck_inDate(checkIn);
-        searchHotel.clickCheck_outDate(ckeckOut);
-        searchHotel.setGuestCountOptionsElement(adults, children, rooms);
-//        searchHotel.setNumberOfAdults(adults);
-//        searchHotel.setNumberOfСhildren(children);
-//        searchHotel.setNumberOfRooms(rooms);
-        searchHotel.clickSearchOffersButton();
-        checkResult(nights, adults);
     }
 
     @DataProvider(name = "searchOptions")

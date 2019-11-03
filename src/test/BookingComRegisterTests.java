@@ -68,7 +68,8 @@ public class BookingComRegisterTests extends BaseTest {
         BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
         bcRegisterPage.clicksubmitButton();
         String message = bcRegisterPage.getValueFromUsernameErrorElement();
-        Assert.assertEquals(message,"Введите электронный адрес", "UsernameError");
+        Assert.assertEquals(message,"Будь ласка, введіть електронну адресу", "UsernameError");
+//        Assert.assertEquals(message,"Введите электронный адрес", "UsernameError");
 //        Assert.assertEquals(message,"Please enter your email address", "UsernameError");
     }
 
@@ -80,7 +81,8 @@ public class BookingComRegisterTests extends BaseTest {
         bcRegisterPage.putValueToLoginField("123");
         bcRegisterPage.clicksubmitButton();
         String message = bcRegisterPage.getValueFromUsernameErrorElement();
-        Assert.assertEquals(message,"Проверьте правильность ввода.", "UsernameError");
+        Assert.assertEquals(message,"Будь ласка, перевірте, чи ви ввели правильну електронну адресу", "UsernameError");
+//        Assert.assertEquals(message,"Проверьте правильность ввода.", "UsernameError");
 //        Assert.assertEquals(message,"Please enter your email address", "UsernameError");
     }
 

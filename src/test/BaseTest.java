@@ -21,7 +21,7 @@ public class BaseTest {
     WebDriver webDriver;
 
     @BeforeTest
-    public void beforeTest() throws InterruptedException {
+    public void beforetest() throws InterruptedException {
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         webDriver.get(BASE_APP_URL);
@@ -30,7 +30,7 @@ public class BaseTest {
 
     @AfterTest
     public void AfterTest() {
-      //  webDriver.quit();
+        webDriver.quit();
     }
 
     public BufferedImage getBufferedImageFromFile(String fullPath) {

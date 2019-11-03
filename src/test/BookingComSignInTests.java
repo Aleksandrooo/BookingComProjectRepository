@@ -70,7 +70,8 @@ public class BookingComSignInTests extends BaseTest{
         bcSignInPage.clicksubmitButton();
         String message = bcSignInPage.getValueFromUsernameErrorElement();
 //        Assert.assertEquals(message,"Введите электронный адрес", "nightAndPeopleList");
-        Assert.assertEquals(message,"Enter your email address", "UsernameError");
+//        Assert.assertEquals(message,"Enter your email address", "UsernameError");
+        Assert.assertEquals(message,"Будь ласка, введіть електронну адресу", "UsernameError");
     }
 
     @Test
@@ -82,7 +83,8 @@ public class BookingComSignInTests extends BaseTest{
         bcSignInPage.clicksubmitButton();
         String message = bcSignInPage.getValueFromUsernameErrorElement();
 //        Assert.assertEquals(message,"Проверьте правильность ввода.", "nightAndPeopleList");
-        Assert.assertEquals(message,"Make sure the email address you entered is correct.", "UsernameError");
+//        Assert.assertEquals(message,"Make sure the email address you entered is correct.", "UsernameError");
+        Assert.assertEquals(message,"Будь ласка, перевірте, чи ви ввели правильну електронну адресу", "UsernameError");
     }
 
     @Test
@@ -94,7 +96,8 @@ public class BookingComSignInTests extends BaseTest{
         bcSignInPage.clicksubmitButton();
         String message = bcSignInPage.getValueFromUsernameErrorElement();
 //        Assert.assertEquals(message,"Проверьте правильность ввода.", "nightAndPeopleList");
-        Assert.assertEquals(message,"Looks like there isn't an account associated with this email address. You can create an account to access our services.", "UsernameError");
+//        Assert.assertEquals(message,"Looks like there isn't an account associated with this email address. You can create an account to access our services.", "UsernameError");
+        Assert.assertEquals(message,"Схоже до цієї адреси не прив'язано жодного акаунта. Ви можете створити акаунт, щоб почати користуватися нашими послугами.", "UsernameError");
     }
 
     @Test
