@@ -15,10 +15,8 @@ public class SearchHotelPage {
     @FindBy(xpath = ".//*[@class='search_hl_name']")
     public WebElement selectSearchDirectionElement;
 
-    //@FindBy(xpath = ".//td[@data-date='2019-11-14']")
     public WebElement check_inElement;
 
-    //@FindBy(xpath = ".//td[@data-date='2019-11-17']")
     public WebElement check_outElement;
 
     @FindBy(xpath = ".//button[@data-sb-id='main']")
@@ -51,15 +49,10 @@ public class SearchHotelPage {
     @FindBy(xpath = "((.//*[@class='sb-group__field sb-group__field-rooms']/div/div)[2]/button)[2]")
     public WebElement roomsCountPlusElement;
 
-//    @FindBy(xpath = ".//li[@class='user_center_option uc_currency js-uc-currency']")
     @FindBy(xpath = ".//*[@data-id='currency_selector']")
     public WebElement selectedCurrencyElement;
 
-//    @FindBy(xpath = ".//li[@class='user_center_option uc_currency js-uc-currency']/input")
-//    @FindBy(xpath = ".//li[@class='user_center_option uc_currency js-uc-currency']/input")
-//    public WebElement selectedCurrency;
-
-    //    @FindBy(xpath = "string(.//*[@data-id='currency_selector']/input/@value)")
+//    @FindBy(xpath = "string(.//*[@data-id='currency_selector']/input/@value)")
 //    public String selectedCurrency;
 
     @FindBy(xpath = ".//a[@data-currency='EUR']")
@@ -96,14 +89,17 @@ public class SearchHotelPage {
 //        }
 //    }
 
-    public void setLanguage(String languageCode) {
+    public void setLanguage(String languageCode) throws InterruptedException {
         selectedLanguageElement.click();
+        Thread.sleep(2000);
         WebElement selectUkrLanguageElement = webDriver.findElement(By.xpath(".//a[@hreflang='" + languageCode + "']"));
         selectUkrLanguageElement.click();
     }
 
-    public void putValueInsearchInputElementField(String value) {
+    public void selectSearchDirection(String value) {
+        searchInputElement.clear();
         searchInputElement.sendKeys(value);
+        selectSearchDirectionElement.click();
     }
 
     public void clickSelectSearchDirection() {

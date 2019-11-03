@@ -28,8 +28,12 @@ public class BookingComRegisterTests extends BaseTest {
 //    }
 
     @BeforeMethod
-    public void beforeMethed(){
+    public void beforeMethed() throws InterruptedException {
         webDriver.manage().deleteAllCookies();
+        webDriver.get(BASE_APP_URL);
+        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+        searchHotelPage.setEurCurrency();
+        searchHotelPage.setLanguage("uk");
     }
 
     @Test

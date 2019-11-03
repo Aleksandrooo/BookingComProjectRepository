@@ -30,9 +30,12 @@ public class BookingComSignInTests extends BaseTest{
 //    }
 
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() throws InterruptedException {
         webDriver.manage().deleteAllCookies();
         webDriver.get(BASE_APP_URL);
+        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+        searchHotelPage.setEurCurrency();
+        searchHotelPage.setLanguage("uk");
     }
 
 

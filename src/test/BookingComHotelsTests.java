@@ -19,19 +19,26 @@ public class BookingComHotelsTests  extends BaseTest{
     WebDriver webDriver;
 
     @BeforeMethod
-    public void beforeSuite() {
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        webDriver.get("https://www.booking.com/index.ru.html");
-        webDriver.manage().window().maximize();
+    public void beforeTest() throws InterruptedException {
+        webDriver.manage().deleteAllCookies();
+        webDriver.get(BASE_APP_URL);
+        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+        searchHotelPage.setEurCurrency();
+        searchHotelPage.setLanguage("uk");
     }
+//    public void beforeTest() {
+//        webDriver = new ChromeDriver();
+//        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        webDriver.get("https://www.booking.com/index.ru.html");
+//        webDriver.manage().window().maximize();
+//    }
 
     @Test
     public void checkFiltersOnSearchResultPageTest() throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         int numberOfNight = 3;
         int numberOfAdults = 2;
-        searchHotel.putValueInsearchInputElementField("Прага");
+        searchHotel.selectSearchDirection("Прага");
         searchHotel.clickSelectSearchDirection();
         searchHotel.clickCheck_inDate("2019-11-14");
         searchHotel.clickCheck_outDate("2019-11-17");
@@ -57,7 +64,7 @@ public class BookingComHotelsTests  extends BaseTest{
     @Test (dataProvider = "searchOptions")
     public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        searchHotel.putValueInsearchInputElementField(direction);
+        searchHotel.selectSearchDirection(direction);
         searchHotel.clickSelectSearchDirection();
         searchHotel.clickCheck_inDate(checkIn);
         searchHotel.clickCheck_outDate(ckeckOut);
@@ -82,8 +89,8 @@ public class BookingComHotelsTests  extends BaseTest{
 
     }
 
-    @AfterMethod
-    public void AfterSuite() {
-        webDriver.quit();
-    }
+//    @AfterMethod
+//    public void AfterTest() {
+//        webDriver.quit();
+//    }
 }

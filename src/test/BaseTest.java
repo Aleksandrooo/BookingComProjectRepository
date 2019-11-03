@@ -21,18 +21,15 @@ public class BaseTest {
     WebDriver webDriver;
 
     @BeforeTest
-    public void beforeSuite(){
+    public void beforeTest() throws InterruptedException {
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         webDriver.get(BASE_APP_URL);
         webDriver.manage().window().maximize();
-        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
-        searchHotelPage.setEurCurrency();
-        searchHotelPage.setLanguage("uk");
     }
 
     @AfterTest
-    public void AfterSuite() {
+    public void AfterTest() {
       //  webDriver.quit();
     }
 

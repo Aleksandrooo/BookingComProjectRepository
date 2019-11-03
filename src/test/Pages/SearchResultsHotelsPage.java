@@ -13,9 +13,6 @@ public class SearchResultsHotelsPage {
 
     public WebDriver webDriver;
 
-//    @FindBy(xpath = ".//div[@id='search_results_table']")
-//    public WebElement searchResultsTableElement;
-
     @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
 
@@ -50,7 +47,8 @@ public class SearchResultsHotelsPage {
     public List<Integer> getPriceOfRooms(){
         List<Integer> pricesList = new ArrayList<>();
         for (WebElement element:priceRoomElementsList){
-            pricesList.add(Integer.valueOf(element.getText().substring(3).replaceAll("\\s","")));
+            System.out.println("element.getText() - " + element.getText() );
+            pricesList.add(Integer.valueOf(element.getText().substring(2).replaceAll("\\s","")));
         }
         return pricesList;
     }
