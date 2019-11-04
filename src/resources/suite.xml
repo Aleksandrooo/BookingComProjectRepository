@@ -4,32 +4,20 @@
     <test verbose="1" name="bookingComTests">
         <classes>
             <class name="test.SearchHotelsTests"></class>
-            <!--<class name="test.BookingComSignInTests"></class>-->
-            <!--<class name="test.BookingComRegisterTests"></class>-->
-            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
         </classes>
     </test>
     <test verbose="1" name="bookingComTests2" enabled="false">
         <classes>
-            <!--<class name="test.SearchHotelsTests"></class>-->
             <class name="test.BookingComSignInTests"></class>
-            <!--<class name="test.BookingComRegisterTests"></class>-->
-            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
         </classes>
     </test>
     <test verbose="1" name="bookingComTests3"  enabled="false">
         <classes>
-            <!--<class name="test.SearchHotelsTests"></class>-->
-            <!--<class name="test.BookingComSignInTests"></class>-->
             <class name="test.BookingComRegisterTests"></class>
-            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests4"  enabled="false">
+    <test verbose="1" name="bookingComTests4">
         <classes>
-            <!--<class name="test.SearchHotelsTests"></class>-->
-            <!--<class name="test.BookingComSignInTests"></class>-->
-            <!--<class name="test.BookingComRegisterTests"></class>-->
             <class name="test.CheckFiltersOnSearchResultPageTests"></class>
         </classes>
     </test>

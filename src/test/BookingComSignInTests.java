@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -19,34 +20,14 @@ import java.io.IOException;
 
 public class BookingComSignInTests extends BaseTest{
 
-//    WebDriver webDriver;
-//
-//    @BeforeMethod
-//    public void beforeSuite(){
-//        webDriver = new ChromeDriver();
-//        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-//        webDriver.get("https://account.booking.com/sign-in");
-//        webDriver.manage().window().maximize();
-//    }
-
-//    @BeforeMethod
-//    public void clearCookiesAndSetUaLang() throws InterruptedException {
-//        webDriver.manage().deleteAllCookies();
-//        webDriver.get(BASE_APP_URL);
-//        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
-//        //searchHotelPage.setEurCurrency();
-//        searchHotelPage.setLanguage("uk");
-//    }
-
     @BeforeMethod
     public void clearCookies(){
         super.clearCookiesAndSetUaLang();
     }
 
-
     @Test
     public void checkSighInLayoutPage() throws InterruptedException, IOException {
-
+        Allure.label("testType", "screenshotDiff");
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.clickSighInButton();
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
@@ -64,7 +45,7 @@ public class BookingComSignInTests extends BaseTest{
         atttAchScreenshatToAllureReport(actual, "actual");
         atttAchScreenshatToAllureReport(expected, "expected");
         atttAchScreenshatToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 1);
+        Assert.assertTrue(difSize < 100);
     }
 
     @Test
@@ -114,33 +95,5 @@ public class BookingComSignInTests extends BaseTest{
         WebElement element = webDriver.findElement(By.xpath(".//*[@class='bui_font_display_two bui_font_heading--bold bui-spacer--medium nw-step-header']"));
         Assert.assertTrue(element.isDisplayed());
     }
-
-//    public BufferedImage getBufferedImageFromFile(String fullPath) {
-//        BufferedImage image = null;
-//        try {
-//            image = ImageIO.read(new File(fullPath));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return image;
-//    }
-//
-//
-//    @Attachment(value = "{filename}", type = "image/png")
-//    public byte[] atttAchScreenshatToAllureReport(BufferedImage screenshot, String filename) {
-//        byte[] imageInByte = new byte[0];
-//        try {
-//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            ImageIO.write(screenshot, "png", baos);
-//            baos.flush();
-//            imageInByte = baos.toByteArray();
-//            baos.close();
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return imageInByte;
-//    }
-
-
 
 }

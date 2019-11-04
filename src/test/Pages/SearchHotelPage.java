@@ -101,9 +101,14 @@ public class SearchHotelPage {
     }
 
     public void selectSearchDirection(String value) {
-        selectSearchDirectionElement.click();
+        //selectSearchDirectionElement.click();
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         selectSearchDirectionElement.click();
     }
 
@@ -112,6 +117,11 @@ public class SearchHotelPage {
     }
 
     public void clickCheck_inDate(String date) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         check_inElement = webDriver.findElement(By.xpath(".//td[@data-date='" + date + "']"));
         check_inElement.click();
     }
@@ -138,7 +148,7 @@ public class SearchHotelPage {
         this.webDriver = webDriver;
     }
 
-    public void setGuestCountOptionsElement(int adults, String children, int rooms) throws InterruptedException {
+    public void setGuestCountOptionsElement(int adults, String children, int rooms)  {
         guestCountOptionsElement.click();
         if (adults == 1) {
             adultCountMinusElement.click();
@@ -146,12 +156,22 @@ public class SearchHotelPage {
         if (adults >= 3) {
             for (int i = 2; i < adults; i++) {
                 adultCountPlusElement.click();
-                Thread.sleep(1000);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        if (rooms >= 2) for (int i = 1; i < adults; i++) {
-            roomsCountPlusElement.click();
-            Thread.sleep(1000);
+        if (rooms >= 2) {
+            for (int i = 1; i < rooms; i++) {
+                roomsCountPlusElement.click();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }

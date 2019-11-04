@@ -16,7 +16,7 @@ import java.util.List;
 //import test.Pages.SearchHotelPage;
 
 public class SearchHotelsTests extends BaseTest {
-    WebDriver webDriver;
+//    WebDriver webDriver;
 
 //    @BeforeMethod
 //    public void beforeMethod() throws InterruptedException {
@@ -54,10 +54,10 @@ public class SearchHotelsTests extends BaseTest {
     }
 
     @Test(dataProvider = "searchOptions")
-    public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {
+    public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms){
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection(direction);
-        searchHotel.clickSelectSearchDirection();
+        //searchHotel.clickSelectSearchDirection();
         searchHotel.clickCheck_inDate(checkIn);
         searchHotel.clickCheck_outDate(ckeckOut);
         searchHotel.setGuestCountOptionsElement(adults, children, rooms);
@@ -66,8 +66,12 @@ public class SearchHotelsTests extends BaseTest {
     }
 
     @Step
-    private void checkResult(int numberOfNight, int numberOfAdults) throws InterruptedException {
-        Thread.sleep(5000);
+    private void checkResult(int numberOfNight, int numberOfAdults)  {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
         for (String str : nightAndPeopleList) {
@@ -84,9 +88,9 @@ public class SearchHotelsTests extends BaseTest {
         LocalDateTime nowDate = LocalDateTime.now();
 
         return new Object[][]{
-                {"Прага", nowDate.plusDays(20).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(25).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 5, 3, "", 1},
-                {"Прага", nowDate.plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(3).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 2, 1, "", 1},
-                {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(30).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 15, 2, "", 1},
+//                {"Прага", nowDate.plusDays(20).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(25).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 5, 3, "", 1},
+//                {"Прага", nowDate.plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(3).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 2, 1, "", 1},
+//                {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(30).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 15, 2, "", 1},
                 {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(18).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 3, 1, "", 2},
         };
 

@@ -49,9 +49,7 @@ public class BookingComRegisterTests extends BaseTest {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.clickRegisterButton();
         BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
-//        WebElement el = webDriver.findElement(By.xpath(".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']"));
 
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, el).getImage();
         BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
         BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
         File outputfile = new File("src/resources/actual/RegisterPage.png");
@@ -63,7 +61,7 @@ public class BookingComRegisterTests extends BaseTest {
         atttAchScreenshatToAllureReport(actual, "actual");
         atttAchScreenshatToAllureReport(expected, "expected");
         atttAchScreenshatToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 1);
+        Assert.assertTrue(difSize < 100);
     }
 
     @Test

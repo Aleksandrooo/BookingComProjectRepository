@@ -17,12 +17,11 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     public static final String BASE_APP_URL = "https://www.booking.com/index.uk.html";
-//    public static final String BASE_APP_URL = "https://www.booking.com/index.ru.html";
 
     WebDriver webDriver;
 
     @BeforeTest
-    public void setUp() throws InterruptedException {
+    public void setUp(){
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         webDriver.get(BASE_APP_URL);
