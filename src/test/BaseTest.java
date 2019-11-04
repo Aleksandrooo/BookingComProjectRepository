@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import test.Pages.SearchHotelPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,7 @@ public class BaseTest {
     WebDriver webDriver;
 
     @BeforeTest
-    public void beforetest() throws InterruptedException {
+    public void setUp() throws InterruptedException {
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         webDriver.get(BASE_APP_URL);
@@ -29,7 +30,7 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void AfterTest() {
+    public void ShutDown() {
         webDriver.quit();
     }
 
@@ -56,5 +57,14 @@ public class BaseTest {
             System.out.println(e.getMessage());
         }
         return imageInByte;
+    }
+
+
+    public void clearCookiesAndSetUaLang() {
+        webDriver.manage().deleteAllCookies();
+        webDriver.get(BASE_APP_URL);
+        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+        searchHotelPage.setEurCurrency();
+        searchHotelPage.setLanguage("uk");
     }
 }

@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="My test suite1" parallel="classes" thread-count="1">
+<suite name="My test suite1" parallel="tests" thread-count="1">
     <test verbose="1" name="bookingComTests">
         <classes>
             <class name="test.SearchHotelsTests"></class>
+            <!--<class name="test.BookingComSignInTests"></class>-->
+            <!--<class name="test.BookingComRegisterTests"></class>-->
+            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
+        </classes>
+    </test>
+    <test verbose="1" name="bookingComTests2" enabled="false">
+        <classes>
+            <!--<class name="test.SearchHotelsTests"></class>-->
             <class name="test.BookingComSignInTests"></class>
+            <!--<class name="test.BookingComRegisterTests"></class>-->
+            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
+        </classes>
+    </test>
+    <test verbose="1" name="bookingComTests3"  enabled="false">
+        <classes>
+            <!--<class name="test.SearchHotelsTests"></class>-->
+            <!--<class name="test.BookingComSignInTests"></class>-->
             <class name="test.BookingComRegisterTests"></class>
+            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
+        </classes>
+    </test>
+    <test verbose="1" name="bookingComTests4"  enabled="false">
+        <classes>
+            <!--<class name="test.SearchHotelsTests"></class>-->
+            <!--<class name="test.BookingComSignInTests"></class>-->
+            <!--<class name="test.BookingComRegisterTests"></class>-->
             <class name="test.CheckFiltersOnSearchResultPageTests"></class>
         </classes>
     </test>

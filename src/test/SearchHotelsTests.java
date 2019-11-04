@@ -18,14 +18,14 @@ import java.util.List;
 public class SearchHotelsTests extends BaseTest {
     WebDriver webDriver;
 
-    @BeforeMethod
-    public void beforeMethod() throws InterruptedException {
-        webDriver.manage().deleteAllCookies();
-        webDriver.get(BASE_APP_URL);
-        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
-        searchHotelPage.setEurCurrency();
-        searchHotelPage.setLanguage("uk");
-    }
+//    @BeforeMethod
+//    public void beforeMethod() throws InterruptedException {
+//        webDriver.manage().deleteAllCookies();
+//        webDriver.get(BASE_APP_URL);
+//        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+//        searchHotelPage.setEurCurrency();
+//        searchHotelPage.setLanguage("uk");
+//    }
 //    public void beforeTest() {
 //        webDriver = new ChromeDriver();
 //        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -47,6 +47,11 @@ public class SearchHotelsTests extends BaseTest {
 //
 //
 //    }
+
+    @BeforeMethod
+    public void clearCookies(){
+        super.clearCookiesAndSetUaLang();
+    }
 
     @Test(dataProvider = "searchOptions")
     public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {

@@ -29,13 +29,18 @@ public class BookingComSignInTests extends BaseTest{
 //        webDriver.manage().window().maximize();
 //    }
 
+//    @BeforeMethod
+//    public void clearCookiesAndSetUaLang() throws InterruptedException {
+//        webDriver.manage().deleteAllCookies();
+//        webDriver.get(BASE_APP_URL);
+//        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
+//        //searchHotelPage.setEurCurrency();
+//        searchHotelPage.setLanguage("uk");
+//    }
+
     @BeforeMethod
-    public void beforeMethod() throws InterruptedException {
-        webDriver.manage().deleteAllCookies();
-        webDriver.get(BASE_APP_URL);
-        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
-        //searchHotelPage.setEurCurrency();
-        searchHotelPage.setLanguage("uk");
+    public void clearCookies(){
+        super.clearCookiesAndSetUaLang();
     }
 
 

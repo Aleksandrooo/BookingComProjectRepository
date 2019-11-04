@@ -46,6 +46,7 @@ public class SearchResultsHotelsPage {
 
     public List<Integer> getPriceOfRooms(){
         List<Integer> pricesList = new ArrayList<>();
+//        String stars = distanseToCenterElement.getAttribute("class");
         for (WebElement element:priceRoomElementsList){
             System.out.println("element.getText() - " + element.getText() );
             pricesList.add(Integer.valueOf(element.getText().substring(2).replaceAll("\\s","")));

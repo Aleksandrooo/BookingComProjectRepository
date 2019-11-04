@@ -89,14 +89,19 @@ public class SearchHotelPage {
 //        }
 //    }
 
-    public void setLanguage(String languageCode) throws InterruptedException {
+    public void setLanguage(String languageCode) {
         selectedLanguageElement.click();
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         WebElement selectUkrLanguageElement = webDriver.findElement(By.xpath(".//a[@hreflang='" + languageCode + "']"));
         selectUkrLanguageElement.click();
     }
 
     public void selectSearchDirection(String value) {
+        selectSearchDirectionElement.click();
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
         selectSearchDirectionElement.click();
