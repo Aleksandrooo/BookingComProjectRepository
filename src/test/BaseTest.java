@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import test.Pages.SearchHotelPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -16,7 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    public static final String BASE_APP_URL = "https://www.booking.com/index.ru.html";
+    public static final String BASE_APP_URL = "https://www.booking.com/index.uk.html";
+//    public static final String BASE_APP_URL = "https://www.booking.com/index.ru.html";
 
     WebDriver webDriver;
 

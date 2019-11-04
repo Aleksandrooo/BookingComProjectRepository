@@ -34,7 +34,7 @@ public class BookingComSignInTests extends BaseTest{
         webDriver.manage().deleteAllCookies();
         webDriver.get(BASE_APP_URL);
         SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
-        searchHotelPage.setEurCurrency();
+        //searchHotelPage.setEurCurrency();
         searchHotelPage.setLanguage("uk");
     }
 

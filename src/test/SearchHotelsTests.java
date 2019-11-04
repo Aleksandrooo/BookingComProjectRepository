@@ -2,17 +2,16 @@ package test;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
-
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import test.Pages.SearchHotelPage;
 import test.Pages.SearchResultsHotelsPage;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 //import test.Pages.SearchHotelPage;
 
@@ -48,6 +47,7 @@ public class SearchHotelsTests extends BaseTest {
 //
 //
 //    }
+
     @Test(dataProvider = "searchOptions")
     public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms) throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);

@@ -3,7 +3,7 @@
 <suite name="My test suite1" parallel="classes" thread-count="1">
     <test verbose="1" name="bookingComTests">
         <classes>
-<!--            <class name="test.SearchHotelsTests"></class>-->
+            <class name="test.SearchHotelsTests"></class>
             <class name="test.BookingComSignInTests"></class>
             <class name="test.BookingComRegisterTests"></class>
             <class name="test.CheckFiltersOnSearchResultPageTests"></class>
