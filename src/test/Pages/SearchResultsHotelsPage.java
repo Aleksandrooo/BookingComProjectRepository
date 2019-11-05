@@ -22,13 +22,18 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//div[@data-id='filter_class']//*[@class='bui-checkbox__label filter_item css-checkbox']")
     public List<WebElement> hotelStarsFilterElementsList;
 
+    @FindBy(xpath = ".//div[@class='bui-checkbox__label filter_item css-checkboxtracked']")
+    public WebElement withoutStarsFilterElement;
+
     @FindBy(xpath = ".//*[@id='filter_distance']//*[@class='bui-checkbox__label filter_item css-checkbox']")
     public List<WebElement> filterDistanceElementsList;
 
     @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
     public List<WebElement> priceRoomElementsList;
 
-    @FindBy(xpath = ".//*[@class='sr-hotel__title-badges']/i[@title]/*[@role]")
+    //.//*[@class='sr-hotel__title-wrap']//i[@title]/*[@role]
+    @FindBy(xpath = ".//*[@class='sr-hotel__title-wrap']")
+//    @FindBy(xpath = ".//*[@class='sr-hotel__title-badges']/i[@title]/*[@role]")
 //    @FindBy(xpath = ".//*[@class='sr-hotel__title-badges']/i/span")
     public List<WebElement> hotelStarsElementsList;
 
@@ -39,12 +44,12 @@ public class SearchResultsHotelsPage {
         budgetFilterElementsList.get(numberOfFilter).click();
     }
 
-    public List<Integer> getPriceOfRooms(){
+    public List<Integer> getPriceOfRooms() {
         List<Integer> pricesList = new ArrayList<>();
 //        String stars = distanseToCenterElement.getAttribute("class");
-        for (WebElement element:priceRoomElementsList){
+        for (WebElement element : priceRoomElementsList) {
             //System.out.println("element.getText() - " + element.getText() );
-            pricesList.add(Integer.valueOf(element.getText().substring(2).replaceAll("\\s","")));
+            pricesList.add(Integer.valueOf(element.getText().substring(2).replaceAll("\\s", "")));
         }
         return pricesList;
     }
@@ -53,15 +58,21 @@ public class SearchResultsHotelsPage {
         hotelStarsFilterElementsList.get(numberOfStars).click();
     }
 
-    public List<String> getStarsOfRooms(){
-        List<String> pricesList = new ArrayList<>();
-//        String stars = distanseToCenterElement.getAttribute("class");
-        for (WebElement element:hotelStarsElementsList){
+    public List<String> getStarsOfRooms() {
+        List<String> starsList = new ArrayList<>();
+        //String stars = distanseToCenterElement.getAttribute("class");
+        for (WebElement hotelNameElement : hotelStarsElementsList) {
             //System.out.println("element.getText() - " + element.getText() );
-            element.getAttribute("class");
-            pricesList.add(element.getAttribute("class"));
+            WebElement starsElement = hotelNameElement.findElement(By.xpath(".//i[@title]/*[@role]"));
+            if (starsElement != null) {
+                starsElement.getAttribute("class");
+                starsList.add(starsElement.getAttribute("class"));
+            } else {
+                starsList.add("");
+            }
+
         }
-        return pricesList;
+        return starsList;
     }
 
 

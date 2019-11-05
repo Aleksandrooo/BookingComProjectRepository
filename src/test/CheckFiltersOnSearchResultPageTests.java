@@ -32,7 +32,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
     }
 
     @Test (dataProvider ="starsFilter")
-    public void checkStarsFilters(int minPrice, int maxPrice, int numberOfFilter) throws InterruptedException {
+    public void checkStarsFilters(String expactedStar, int numberOfFilter) throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection("Прага");
         searchHotel.clickCheck_inDate("2019-12-14");
@@ -42,10 +42,13 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchResultsHotelsPage.clickChekboxFilterStars(numberOfFilter);
         Thread.sleep(5000);
         List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
-        checkStarsResult(minPrice, starsList);
+        checkStarsResult(expactedStar, starsList);
     }
 
-    private void checkStarsResult(int minPrice, List<String> starsList) {
+    private void checkStarsResult(String expactedStar, List<String> starsList) {
+        for (String actualStar:starsList){
+            Assert.assertEquals(expactedStar, actualStar, "expactedStar - ");
+        }
     }
 
     @Step
@@ -63,7 +66,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
                 {50, 100,1},
                 {100, 150,2},
                 {150, 200,3},
-                {200, 99999,4},
+                {200, 99999,4}
         };
 
     }
@@ -71,7 +74,12 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
     @DataProvider(name ="starsFilter")
     public Object[][] starsFilter() {
         return new Object[][]{
-                //TODO
+                {"bk-icon -sprite-ratings_stars_1", 0},
+                {"bk-icon -sprite-ratings_stars_2", 1},
+                {"bk-icon -sprite-ratings_stars_3", 2},
+                {"bk-icon -sprite-ratings_stars_4", 3},
+                {"bk-icon -sprite-ratings_stars_5", 4},
+               // {"", 5}
         };
 
     }
