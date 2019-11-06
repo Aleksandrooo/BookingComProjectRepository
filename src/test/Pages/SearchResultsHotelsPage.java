@@ -28,6 +28,12 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//*[@id='filter_distance']//*[@class='bui-checkbox__label filter_item css-checkbox']")
     public List<WebElement> filterDistanceElementsList;
 
+    @FindBy(xpath = ".//*[@class='sr-cta-button-row']")
+    public List<WebElement> selectRoomButton;
+
+    @FindBy(xpath = ".//select[@class='hprt-nos-select']")
+    public List<WebElement> numberOfRoomSelect;
+
     @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
     public List<WebElement> priceRoomElementsList;
 

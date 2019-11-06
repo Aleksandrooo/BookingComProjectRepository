@@ -30,7 +30,7 @@ public class BaseTest {
 
     @AfterTest
     public void ShutDown() {
-        webDriver.quit();
+      //  webDriver.quit();
     }
 
     public BufferedImage getBufferedImageFromFile(String fullPath) {
