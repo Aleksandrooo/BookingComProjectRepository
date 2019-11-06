@@ -4,11 +4,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import test.Pages.SearchHotelPage;
 import test.Pages.SearchResultsHotelsPage;
+import test.Pages.SelectedHotelPage;
 
-public class BookHotelTests  extends BaseTest{
+public class BookHotelTests extends BaseTest {
 
     @BeforeMethod
-    public void clearCookies(){
+    public void clearCookies() {
         super.clearCookiesAndSetUaLang();
     }
 
@@ -20,10 +21,14 @@ public class BookHotelTests  extends BaseTest{
         searchHotel.clickCheck_outDate("2019-12-17");
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
-//        searchResultsHotelsPage.clickChekboxFilterStars(numberOfFilter);
-        Thread.sleep(5000);
-      //  List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
-       // checkStarsResult(expactedStar, starsList);
+        searchResultsHotelsPage.clickSelectRoomButton(1);
+        Thread.sleep(4000);
+        SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
+        selectedHotelPage.setNumberOfRoom(1,1);
+        selectedHotelPage.clickBookingButton(1);
+
+        //  List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
+        // checkStarsResult(expactedStar, starsList);
     }
 
 

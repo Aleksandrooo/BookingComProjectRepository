@@ -29,10 +29,10 @@ public class SearchResultsHotelsPage {
     public List<WebElement> filterDistanceElementsList;
 
     @FindBy(xpath = ".//*[@class='sr-cta-button-row']")
-    public List<WebElement> selectRoomButton;
+    public List<WebElement> selectRoomButtonElement;
 
-    @FindBy(xpath = ".//select[@class='hprt-nos-select']")
-    public List<WebElement> numberOfRoomSelect;
+//    @FindBy(xpath = ".//select[@class='hprt-nos-select']")
+//    public List<WebElement> numberOfRoomSelect;
 
     @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
     public List<WebElement> priceRoomElementsList;
@@ -45,6 +45,10 @@ public class SearchResultsHotelsPage {
 
     @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
     public WebElement distanseToCenterElement;
+
+    public void clickSelectRoomButton(int numberOfRoom) {
+        selectRoomButtonElement.get(numberOfRoom).click();
+    }
 
     public void clickChekboxFilterPrice(int numberOfFilter) {
         budgetFilterElementsList.get(numberOfFilter).click();
