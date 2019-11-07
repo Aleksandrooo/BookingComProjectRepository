@@ -6,6 +6,8 @@ import test.Pages.SearchHotelPage;
 import test.Pages.SearchResultsHotelsPage;
 import test.Pages.SelectedHotelPage;
 
+import java.util.ArrayList;
+
 public class BookHotelTests extends BaseTest {
 
     @BeforeMethod
@@ -24,8 +26,10 @@ public class BookHotelTests extends BaseTest {
         searchResultsHotelsPage.clickSelectRoomButton(1);
         Thread.sleep(4000);
         SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
-        selectedHotelPage.setNumberOfRoom(1,1);
+        selectedHotelPage.setNumberOfRoom(1, 1);
         selectedHotelPage.clickBookingButton(1);
+        ArrayList<String> tabs = new ArrayList<String>(webDriver.getWindowHandles());
+        webDriver.switchTo().window(tabs.get(1)); //switches to new tab
 
         //  List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
         // checkStarsResult(expactedStar, starsList);

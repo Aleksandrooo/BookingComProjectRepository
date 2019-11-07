@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="My test suite1" parallel="tests" thread-count="1">
-    <test verbose="1" name="bookingComTests">
+    <test verbose="1" name="bookingComTests" enabled="false">
         <classes>
-            <class name="test.SearchHotelsTests"></class>
+            <class name="test.SearchHotelsTests" ></class>
         </classes>
     </test>
     <test verbose="1" name="bookingComTests2" enabled="false">
@@ -16,7 +16,7 @@
             <class name="test.BookingComRegisterTests"></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests4">
+    <test verbose="1" name="bookingComTests4" enabled="true">
         <classes>
             <class name="test.CheckFiltersOnSearchResultPageTests"></class>
         </classes>

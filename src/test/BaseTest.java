@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -31,6 +32,11 @@ public class BaseTest {
     @AfterTest
     public void ShutDown() {
       //  webDriver.quit();
+    }
+
+    public void switchToTab(int index){
+        ArrayList<String> tabs = new ArrayList<String>(webDriver.getWindowHandles());
+        webDriver.switchTo().window(tabs.get(index)); //switches to new tab
     }
 
     public BufferedImage getBufferedImageFromFile(String fullPath) {

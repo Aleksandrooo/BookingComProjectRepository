@@ -19,7 +19,8 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//*[@id='filter_price']//*[@class=' filterelement        ']")
     public List<WebElement> budgetFilterElementsList;
 
-    @FindBy(xpath = ".//div[@data-id='filter_class']//*[@class='bui-checkbox__label filter_item css-checkbox']")
+//    @FindBy(xpath = ".//div[@data-id='filter_class']//*[@class='bui-checkbox__label filter_item css-checkbox']")
+    @FindBy(xpath = ".//div[@data-id='filter_class']//a[@data-id]")
     public List<WebElement> hotelStarsFilterElementsList;
 
     @FindBy(xpath = ".//div[@class='bui-checkbox__label filter_item css-checkboxtracked']")
@@ -70,18 +71,21 @@ public class SearchResultsHotelsPage {
 
     public List<String> getStarsOfRooms() {
         List<String> starsList = new ArrayList<>();
-        //String stars = distanseToCenterElement.getAttribute("class");
-        for (WebElement hotelNameElement : hotelStarsElementsList) {
-            //System.out.println("element.getText() - " + element.getText() );
-            WebElement starsElement = hotelNameElement.findElement(By.xpath(".//i[@title]/*[@role]"));
-            if (starsElement != null) {
-                starsElement.getAttribute("class");
-                starsList.add(starsElement.getAttribute("class"));
-            } else {
-                starsList.add("");
-            }
-
+        for (WebElement hotelElement : hotelSearchResultsTableElement) {
+            starsList.add(hotelElement.getAttribute("data-class"));
         }
+        //String stars = distanseToCenterElement.getAttribute("class");
+//        for (WebElement hotelNameElement : hotelStarsElementsList) {
+//            //System.out.println("element.getText() - " + element.getText() );
+//            WebElement starsElement = hotelNameElement.findElement(By.xpath(".//i[@title]/*[@role]"));
+//            if (starsElement != null) {
+//                starsElement.getAttribute("class");
+//                starsList.add(starsElement.getAttribute("class"));
+//            } else {
+//                starsList.add("");
+//            }
+//
+//        }
         return starsList;
     }
 

@@ -17,7 +17,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         super.clearCookiesAndSetUaLang();
     }
 
-    @Test (dataProvider ="priceFilter")
+    @Test (dataProvider ="priceFilter", enabled = true)
     public void checkPriceFilters(int minPrice, int maxPrice, int numberOfFilter) throws InterruptedException {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection("Прага");
@@ -74,12 +74,12 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
     @DataProvider(name ="starsFilter")
     public Object[][] starsFilter() {
         return new Object[][]{
-                {"bk-icon -sprite-ratings_stars_1", 0},
-                {"bk-icon -sprite-ratings_stars_2", 1},
-                {"bk-icon -sprite-ratings_stars_3", 2},
-                {"bk-icon -sprite-ratings_stars_4", 3},
-                {"bk-icon -sprite-ratings_stars_5", 4},
-               // {"", 5}
+                {"1", 0},
+                {"2", 1},
+                {"3", 2},
+                {"4", 3},
+                {"5", 4},
+                {"0", 5}
         };
 
     }
