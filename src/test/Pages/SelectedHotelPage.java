@@ -1,7 +1,6 @@
 package test.Pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -15,6 +14,9 @@ public class SelectedHotelPage {
     @FindBy(xpath = ".//select[@class='hprt-nos-select']")
     public List<Select> selectList;
     //public List<WebElement> numberOfRoomSelectElement;
+
+    @FindBy(xpath = "(.//select[@class='hprt-nos-select'])[1]")
+    public Select select;
 
     @FindBy(xpath = ".//*[@class='hprt-reservation-cta']")
     public List<WebElement> bookingButtonElement;
@@ -35,9 +37,12 @@ public class SelectedHotelPage {
     public List<WebElement> alertErrorElement;
 
     public void setNumberOfRoom(int roomIndex, int numberOfRooms ){
+        WebElement webElement = webDriver.findElement(By.xpath(".//*[@class='hprt-table-header-cell hprt-table-header-rooms-number']"));
+        System.out.println(webElement.getText());
         //numberOfRoomSelectElement.get(roomIndex).click();
         //Select select = new Select(numberOfRoomSelectElement.get(roomIndex));
-        selectList.get(roomIndex).selectByIndex(0);
+        selectList.get(0).getOptions();
+        selectList.get(roomIndex).selectByIndex(numberOfRooms);
     }
 
 //    baseUrl = "http://www.google.co.uk/";

@@ -25,11 +25,14 @@ public class BookHotelTests extends BaseTest {
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickSelectRoomButton(1);
         Thread.sleep(4000);
+        switchToTab(1);
         SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
         selectedHotelPage.setNumberOfRoom(1, 1);
         selectedHotelPage.clickBookingButton(1);
-        ArrayList<String> tabs = new ArrayList<String>(webDriver.getWindowHandles());
-        webDriver.switchTo().window(tabs.get(1)); //switches to new tab
+
+       // SelectedHotelPage selectedHotelPage
+//        ArrayList<String> tabs = new ArrayList<String>(webDriver.getWindowHandles());
+//        webDriver.switchTo().window(tabs.get(1)); //switches to new tab
 
         //  List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
         // checkStarsResult(expactedStar, starsList);
