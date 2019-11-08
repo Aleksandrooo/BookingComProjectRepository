@@ -21,4 +21,15 @@
             <class name="test.CheckFiltersOnSearchResultPageTests"></class>
         </classes>
     </test>
+    <test verbose="1" name="bookingComTests5" enabled="true">
+        <classes>
+            <class name="test.BookHotelTests"></class>
+        </classes>
+    </test>
+    <test verbose="1" name="bookingComTests6" enabled="true">
+        <classes>
+            <class name="test.СhangeSearchOptions"></class>
+        </classes>
+    </test>
+
 </suite>
