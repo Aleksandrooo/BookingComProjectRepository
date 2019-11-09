@@ -47,6 +47,30 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
     public WebElement distanseToCenterElement;
 
+    @FindBy(xpath = "(.//input[@type='search']")
+    public WebElement inputSearchElement;
+
+    @FindBy(xpath = "(.//*[@class='sb-date-field__display'])[1]")
+    public WebElement checkInDayElement;
+
+    //.//*[@class='c2-day ' and @data-id='1578960000000']/span
+    @FindBy(xpath = "(.//*[@class='c2-day-inner' and text()=\"14\" ]'])[3]")
+    public WebElement setValueCheckInDayElement;
+
+    @FindBy(xpath = "(.//*[@class='sb-date-field__display'])[2]")
+    public WebElement checkOutDayElement;
+
+    @FindBy(xpath = "(.//*[@class='c2-day-inner' and text()=\"14\" ]'])[3]")
+    public WebElement setValueCheckOutDayElement;
+
+    @FindBy(xpath = ".//button[@data-sb-id='main']")
+    public WebElement searchButtonElement;
+    
+//    @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
+//    public WebElement distanseToCenterElement;
+//    @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
+//    public WebElement distanseToCenterElement;
+
     public void clickSelectRoomButton(int numberOfRoom) {
         selectRoomButtonElement.get(numberOfRoom).click();
     }
