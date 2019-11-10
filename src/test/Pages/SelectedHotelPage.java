@@ -16,12 +16,14 @@ public class SelectedHotelPage {
     //public List<WebElement> numberOfRoomSelectElement;
 
     @FindBy(xpath = "(.//select[@class='hprt-nos-select'])[1]")
-    public Select select;
+    public WebElement numberOfRoomElement;
+//    public Select select;
 
     @FindBy(xpath = ".//*[@class='hprt-reservation-cta']")
     public List<WebElement> bookingButtonElement;
 
-
+    @FindBy(xpath = ".//*[@id='hp_availability_style_changes']")
+    public WebElement roomsAvailabilityElement;
 
     public void setNumberOfRoom(int roomIndex, int numberOfRooms ){
 //        WebElement webElement = webDriver.findElement(By.xpath(".//*[@class='hprt-table-header-cell hprt-table-header-rooms-number']"));
@@ -30,7 +32,8 @@ public class SelectedHotelPage {
         //Select select = new Select(numberOfRoomSelectElement.get(roomIndex));
 //        selectList.get(0).getOptions();
 //        selectList.get(roomIndex).selectByIndex(numberOfRooms);
-        select.selectByIndex(numberOfRooms);
+        Select dropDown = new Select(numberOfRoomElement);
+        dropDown.selectByIndex(numberOfRooms);
     }
 
     public void clickBookingButton(int roomIndex){

@@ -57,7 +57,6 @@ public class SearchHotelsTests extends BaseTest {
     public void checkSearchTest(String direction, String checkIn, String ckeckOut, int nights, int adults, String children, int rooms){
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection(direction);
-        //searchHotel.clickSelectSearchDirection();
         searchHotel.clickCheck_inDate(checkIn);
         searchHotel.clickCheck_outDate(ckeckOut);
         searchHotel.setGuestCountOptionsElement(adults, children, rooms);
@@ -65,39 +64,34 @@ public class SearchHotelsTests extends BaseTest {
         checkResult(nights, adults);
     }
 
-    @Step
-    private void checkResult(int numberOfNight, int numberOfAdults)  {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
-        List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
-        for (String str : nightAndPeopleList) {
-            String[] strArray = str.split(",");
-            String night = strArray[0].substring(0, 2).trim();
-            String adult = strArray[1].substring(0, 3).trim();
-            Assert.assertEquals(Integer.parseInt(night), numberOfNight, "nightAndPeopleList");
-            Assert.assertEquals(Integer.parseInt(adult), numberOfAdults, "nightAndPeopleList");
-        }
-    }
+//    @Step
+//    public void checkResult(int numberOfNight, int numberOfAdults)  {
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
+//        List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
+//        for (String str : nightAndPeopleList) {
+//            String[] strArray = str.split(",");
+//            String night = strArray[0].substring(0, 2).trim();
+//            String adult = strArray[1].substring(0, 3).trim();
+//            Assert.assertEquals(Integer.parseInt(night), numberOfNight, "nightAndPeopleList");
+//            Assert.assertEquals(Integer.parseInt(adult), numberOfAdults, "nightAndPeopleList");
+//        }
+//    }
 
     @DataProvider(name = "searchOptions")
     public Object[][] testData1() {
         LocalDateTime nowDate = LocalDateTime.now();
 
         return new Object[][]{
-//                {"Прага", nowDate.plusDays(20).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(25).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 5, 3, "", 1},
-//                {"Прага", nowDate.plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(3).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 2, 1, "", 1},
-//                {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(30).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 15, 2, "", 1},
+                {"Прага", nowDate.plusDays(20).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(25).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 5, 3, "", 1},
+                {"Прага", nowDate.plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(3).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 2, 1, "", 1},
+                {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(30).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 15, 2, "", 1},
                 {"Прага", nowDate.plusDays(15).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nowDate.plusDays(18).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), 3, 1, "", 2},
         };
 
     }
-
-//    @AfterMethod
-//    public void AfterTest() {
-//        webDriver.quit();
-//    }
 }

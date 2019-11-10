@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="My test suite1" parallel="tests" thread-count="1">
-    <test verbose="1" name="bookingComTests" enabled="false">
+
+    <test verbose="1" name="bookingComTests" enabled="true">
         <classes>
             <class name="test.SearchHotelsTests" ></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests2" enabled="false">
+    <test verbose="1" name="bookingComTests2" enabled="true">
         <classes>
             <class name="test.BookingComSignInTests"></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests3"  enabled="false">
+    <test verbose="1" name="bookingComTests3"  enabled="true">
         <classes>
             <class name="test.BookingComRegisterTests"></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests4" enabled="true">
+    <test verbose="1" name="CheckFiltersOnSearchResultPageTests" enabled="true">
         <classes>
             <class name="test.CheckFiltersOnSearchResultPageTests"></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests5" enabled="true">
+    <test verbose="1" name="Create reservation - 1 room 2 adult" enabled="true">
         <classes>
             <class name="test.BookHotelTests"></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests6" enabled="true">
+    <test verbose="1" name="Сhange Search Options on search result page" enabled="true">
         <classes>
             <class name="test.СhangeSearchOptions"></class>
         </classes>
