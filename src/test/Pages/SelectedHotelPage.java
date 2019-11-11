@@ -20,7 +20,8 @@ public class SelectedHotelPage {
 //    public Select select;
 
     @FindBy(xpath = ".//*[@class='hprt-reservation-cta']")
-    public List<WebElement> bookingButtonElement;
+    public WebElement bookingButtonElement;
+//    public List<WebElement> bookingButtonElement;
 
     @FindBy(xpath = ".//*[@id='hp_availability_style_changes']")
     public WebElement roomsAvailabilityElement;
@@ -37,7 +38,8 @@ public class SelectedHotelPage {
     }
 
     public void clickBookingButton(int roomIndex){
-        bookingButtonElement.get(roomIndex).click();
+        bookingButtonElement.click();
+//        bookingButtonElement.get(roomIndex).click();
     }
 
     public SelectedHotelPage(WebDriver webDriver) {

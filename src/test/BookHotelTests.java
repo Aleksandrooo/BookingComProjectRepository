@@ -9,8 +9,6 @@ import test.Pages.SearchHotelPage;
 import test.Pages.SearchResultsHotelsPage;
 import test.Pages.SelectedHotelPage;
 
-import java.util.ArrayList;
-
 public class BookHotelTests extends BaseTest {
 
     @BeforeMethod
@@ -41,7 +39,7 @@ public class BookHotelTests extends BaseTest {
         bcBookPage.clickBookButton();
         bcBookPage.closeInfoBox();
         WebElement info = bcBookPage.getAlertError();
-        makeScreenshotOfElement(bcBookPage.alertErrorElement);
+        makeScreenshotOfElement(bcBookPage.mainContentElement);
 
         Assert.assertEquals(info.getAttribute("data-component"),"bp/top-validation-errors", "bui-alert--error");
     }
