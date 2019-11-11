@@ -1,13 +1,9 @@
 package test;
 
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import test.Pages.BCBookPage;
 import test.Pages.SearchHotelPage;
 import test.Pages.SearchResultsHotelsPage;
-import test.Pages.SelectedHotelPage;
 
 public class СhangeSearchOptions extends  BaseTest {
 
@@ -34,8 +30,5 @@ public class СhangeSearchOptions extends  BaseTest {
         searchResultsHotelsPage.clickSearchButton();
         makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
         checkResult(2,3);
-       //TODO
     }
-
-
 }

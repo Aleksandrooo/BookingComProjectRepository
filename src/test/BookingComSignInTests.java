@@ -25,28 +25,28 @@ public class BookingComSignInTests extends BaseTest{
         super.clearCookiesAndSetUaLang();
     }
 
-    @Test
-    public void checkSighInLayoutPage() throws InterruptedException, IOException {
-        Allure.label("testType", "screenshotDiff");
-        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        searchHotel.clickSighInButton();
-        BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
-
-        AShot aShot = new AShot();
-        aShot.coordsProvider(new WebDriverCoordsProvider());
-        BufferedImage actual = aShot.takeScreenshot(webDriver, bcSignInPage.getSignInPageShotElement()).getImage();
-        BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
-        File outputfile = new File("src/resources/actual/SighInPage.png");
-        ImageIO.write(actual, "png", outputfile);
-
-        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
-        int difSize = diffImage.getDiffSize();
-        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-        atttAchScreenshatToAllureReport(actual, "actual");
-        atttAchScreenshatToAllureReport(expected, "expected");
-        atttAchScreenshatToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 100);
-    }
+//    @Test
+//    public void checkSighInLayoutPage() throws InterruptedException, IOException {
+//        Allure.label("testType", "screenshotDiff");
+//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+//        searchHotel.clickSighInButton();
+//        BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
+//
+//        AShot aShot = new AShot();
+//        aShot.coordsProvider(new WebDriverCoordsProvider());
+//        BufferedImage actual = aShot.takeScreenshot(webDriver, bcSignInPage.getSignInPageShotElement()).getImage();
+//        BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
+//        File outputfile = new File("src/resources/actual/SighInPage.png");
+//        ImageIO.write(actual, "png", outputfile);
+//
+//        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
+//        int difSize = diffImage.getDiffSize();
+//        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
+//        atttAchScreenshatToAllureReport(actual, "actual");
+//        atttAchScreenshatToAllureReport(expected, "expected");
+//        atttAchScreenshatToAllureReport(diff, "diff");
+//        Assert.assertTrue(difSize < 100);
+//    }
 
     @Test
     public void checkPutEmptiLogin(){

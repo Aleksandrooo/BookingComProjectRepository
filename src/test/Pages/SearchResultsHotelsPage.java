@@ -20,12 +20,8 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//*[@id='filter_price']//*[@class=' filterelement        ']")
     public List<WebElement> budgetFilterElementsList;
 
-    //    @FindBy(xpath = ".//div[@data-id='filter_class']//*[@class='bui-checkbox__label filter_item css-checkbox']")
     @FindBy(xpath = ".//div[@data-id='filter_class']//a[@data-id]")
     public List<WebElement> hotelStarsFilterElementsList;
-
-    @FindBy(xpath = ".//div[@class='bui-checkbox__label filter_item css-checkboxtracked']")
-    public WebElement withoutStarsFilterElement;
 
     @FindBy(xpath = ".//*[@id='filter_distance']//*[@class='bui-checkbox__label filter_item css-checkbox']")
     public List<WebElement> filterDistanceElementsList;
@@ -33,26 +29,11 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//*[@class='sr-cta-button-row']")
     public List<WebElement> selectRoomButtonElement;
 
-//    @FindBy(xpath = ".//select[@class='hprt-nos-select']")
-//    public List<WebElement> numberOfRoomSelect;
-
     @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
     public List<WebElement> priceRoomElementsList;
 
-    //.//*[@class='sr-hotel__title-wrap']//i[@title]/*[@role]
-    @FindBy(xpath = ".//*[@class='sr-hotel__title-wrap']")
-//    @FindBy(xpath = ".//*[@class='sr-hotel__title-badges']/i[@title]/*[@role]")
-//    @FindBy(xpath = ".//*[@class='sr-hotel__title-badges']/i/span")
-    public List<WebElement> hotelStarsElementsList;
-
     @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
     public WebElement distanseToCenterElement;
-
-
-//    @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
-//    public WebElement distanseToCenterElement;
-//    @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
-//    public WebElement distanseToCenterElement;
 
     public void clickSelectRoomButton(int numberOfRoom) {
         selectRoomButtonElement.get(numberOfRoom).click();
@@ -64,9 +45,7 @@ public class SearchResultsHotelsPage {
 
     public List<Integer> getPriceOfRooms() {
         List<Integer> pricesList = new ArrayList<>();
-//        String stars = distanseToCenterElement.getAttribute("class");
         for (WebElement element : priceRoomElementsList) {
-            //System.out.println("element.getText() - " + element.getText() );
             pricesList.add(Integer.valueOf(element.getText().substring(2).replaceAll("\\s", "")));
         }
         return pricesList;
@@ -81,21 +60,8 @@ public class SearchResultsHotelsPage {
         for (WebElement hotelElement : hotelSearchResultsTableElement) {
             starsList.add(hotelElement.getAttribute("data-class"));
         }
-        //String stars = distanseToCenterElement.getAttribute("class");
-//        for (WebElement hotelNameElement : hotelStarsElementsList) {
-//            //System.out.println("element.getText() - " + element.getText() );
-//            WebElement starsElement = hotelNameElement.findElement(By.xpath(".//i[@title]/*[@role]"));
-//            if (starsElement != null) {
-//                starsElement.getAttribute("class");
-//                starsList.add(starsElement.getAttribute("class"));
-//            } else {
-//                starsList.add("");
-//            }
-//
-//        }
         return starsList;
     }
-
 
     public List<String> getNumberOfPeopleAndNigntsString() {
         List<String> strList = new ArrayList<>();
@@ -116,25 +82,14 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = "(.//*[@class='sb-date-field__display'])[1]")
     public WebElement checkInDayElement;
 
-    //.//*[@class='c2-day ' and @data-id='1578960000000']/span
-//    @FindBy(xpath = "(.//*[@class='c2-day-inner' and text()=\"14\" ]'])[3]")
-//    public WebElement setValueCheckInDayElement;
-
     @FindBy(xpath = "(.//*[@class='sb-date-field__display'])[2]")
     public WebElement checkOutDayElement;
 
-//    @FindBy(xpath = "(.//*[@class='c2-day-inner' and text()=\"16\" ]'])[3]")
-//    public WebElement setValueCheckOutDayElement;
-
     @FindBy(xpath = ".//select[@id='group_adults']")
     public WebElement groupAdultsSelect;
-//    @FindBy(xpath = ".//select[@id='group_adults']")
-//    public Select groupAdultsSelect;
 
     @FindBy(xpath = ".//select[@id='no_rooms']")
     public WebElement groupRoomsSelect;
-//    @FindBy(xpath = ".//select[@id='no_rooms']")
-//    public Select groupRoomsSelect;
 
     @FindBy(xpath = ".//button[@data-sb-id='main']")
     public WebElement searchButtonElement;
@@ -175,14 +130,11 @@ public class SearchResultsHotelsPage {
         Select dropDown = new Select(groupRoomsSelect);
         dropDown.selectByIndex(numberOfRooms - 1);
     }
-//    public void setGroupRooms(int numberOfRooms) {
-//        groupRoomsSelect.selectByIndex(numberOfRooms - 1);
-//    }
 
     public void clickSearchButton() {
         searchButtonElement.click();
     }
-    //--------------
+    //----------------------------------
 
     public SearchResultsHotelsPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);

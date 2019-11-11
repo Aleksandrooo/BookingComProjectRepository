@@ -17,52 +17,34 @@ import java.io.File;
 import java.io.IOException;
 
 public class BookingComRegisterTests extends BaseTest {
-   // WebDriver webDriver;
-
-//    @BeforeMethod
-//    public void beforeSuite(){
-//        webDriver = new ChromeDriver();
-//        webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-//        webDriver.get(BASE_APP_URL);
-//        webDriver.manage().window().maximize();
-//    }
-
-//    @BeforeMethod
-//    public void beforeMethed() throws InterruptedException {
-//        webDriver.manage().deleteAllCookies();
-//        webDriver.get(BASE_APP_URL);
-//        SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
-//       // searchHotelPage.setEurCurrency();
-//        searchHotelPage.setLanguage("uk");
-//    }
 
     @BeforeMethod
     public void clearCookies(){
         super.clearCookiesAndSetUaLang();
     }
 
-    @Test
-    public void checkSighInLayoutPage() throws InterruptedException, IOException {
-        Allure.label("testType", "screenshotDiff");
-        AShot aShot = new AShot();
-        aShot.coordsProvider(new WebDriverCoordsProvider());
-        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        searchHotel.clickRegisterButton();
-        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
-
-        BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
-        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
-        File outputfile = new File("src/resources/actual/RegisterPage.png");
-        ImageIO.write(actual, "png", outputfile);
-        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
-
-        int difSize = diffImage.getDiffSize();
-        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-        atttAchScreenshatToAllureReport(actual, "actual");
-        atttAchScreenshatToAllureReport(expected, "expected");
-        atttAchScreenshatToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 100);
-    }
+//    @Test
+//    public void checkSighInLayoutPage() throws InterruptedException, IOException {
+//        Allure.label("testType", "screenshotDiff");
+//        AShot aShot = new AShot();
+//        aShot.coordsProvider(new WebDriverCoordsProvider());
+//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+//        searchHotel.clickRegisterButton();
+//        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
+//
+//        BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
+//        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
+//        File outputfile = new File("src/resources/actual/RegisterPage.png");
+//        ImageIO.write(actual, "png", outputfile);
+//        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
+//
+//        int difSize = diffImage.getDiffSize();
+//        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
+//        atttAchScreenshatToAllureReport(actual, "actual");
+//        atttAchScreenshatToAllureReport(expected, "expected");
+//        atttAchScreenshatToAllureReport(diff, "diff");
+//        Assert.assertTrue(difSize < 100);
+//    }
 
     @Test
     public void checkPutEmptiLogin(){
@@ -99,9 +81,4 @@ public class BookingComRegisterTests extends BaseTest {
         Assert.assertTrue(bcRegisterPage.getPasswordElement().isDisplayed(), "getPasswordElement");
         Assert.assertTrue(bcRegisterPage.getConfirmedPasswordElement().isDisplayed(), "getConfirmedPasswordElement");
     }
-
-//    @AfterMethod
-//    public void AfterSuite() {
-//          webDriver.quit();
-//    }
 }

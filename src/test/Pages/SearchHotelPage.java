@@ -9,6 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 public class SearchHotelPage {
     public WebDriver webDriver;
 
+    @FindBy(xpath = ".//*[@id='b2indexPage']")
+    public WebElement bodyElement;
+
+    @FindBy(xpath = ".//*[@id='bodyconstraint-inner']")
+    public WebElement bodyconstraintElement;
+
     @FindBy(xpath = ".//input[@id='ss']")
     public WebElement searchInputElement;
 
@@ -52,14 +58,8 @@ public class SearchHotelPage {
     @FindBy(xpath = ".//*[@data-id='currency_selector']")
     public WebElement selectedCurrencyElement;
 
-//    @FindBy(xpath = "string(.//*[@data-id='currency_selector']/input/@value)")
-//    public String selectedCurrency;
-
     @FindBy(xpath = ".//a[@data-currency='EUR']")
     public WebElement selectEURElement;
-
-//    @FindBy(xpath = ".//li[@data-id='language_selector']/a/img/@alt")
-//    public WebElement selectedLanguageElement;
 
     @FindBy(xpath = ".//li[@data-id='language_selector']")
     public WebElement selectedLanguageElement;
@@ -71,23 +71,6 @@ public class SearchHotelPage {
         selectedCurrencyElement.click();
         selectEURElement.click();
     }
-
-//    public void  setEurCurrency(){
-//        String str;
-//        str = selectedCurrency.getAttribute("value");
-//        if (!selectedCurrency.equals("EUR")) {
-//            selectedCurrencyElement.click();
-//            selectEURElement.click();
-//        }
-//    }
-
-//    public void setUkrLanguage() {
-//        if (!selectedLanguageElement.findElement("string()").equals("Українською")) {
-//            setLanguage("uk");
-////            selectedLanguageElement.click();
-////            selectUkrLanguageElement.click();
-//        }
-//    }
 
     public void setLanguage(String languageCode) {
         selectedLanguageElement.click();
@@ -101,7 +84,6 @@ public class SearchHotelPage {
     }
 
     public void selectSearchDirection(String value) {
-        //selectSearchDirectionElement.click();
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
         try {
@@ -109,10 +91,6 @@ public class SearchHotelPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        selectSearchDirectionElement.click();
-    }
-
-    public void clickSelectSearchDirection() {
         selectSearchDirectionElement.click();
     }
 
