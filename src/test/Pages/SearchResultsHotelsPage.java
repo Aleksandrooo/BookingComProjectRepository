@@ -13,7 +13,7 @@ import java.util.List;
 public class SearchResultsHotelsPage {
 
     public WebDriver webDriver;
-
+//.//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ' and //*[@role='presentation']]
     @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
 

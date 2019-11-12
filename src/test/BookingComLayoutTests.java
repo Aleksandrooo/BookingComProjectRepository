@@ -11,6 +11,7 @@ import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
 import test.Pages.BCRegisterPage;
 import test.Pages.BCSignInPage;
 import test.Pages.SearchHotelPage;
+import test.Pages.SearchResultsHotelsPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -27,15 +28,40 @@ public class BookingComLayoutTests extends BaseTest {
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-//        searchHotel.clickRegisterButton();
-//        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
-        Set<By> ignoredElements = new HashSet<>();
-        ignoredElements.add(new By.ByXPath(".//*[@data-visible='accommodation,flights,rentalcars']")); //
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, searchHotel.topElement).getImage();
-//        BufferedImage actual = aShot.addIgnoredElement(By.xpath(".//*[@id='bodyconstraint-inner']")).takeScreenshot(webDriver, searchHotel.topElement).getImage();
-        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/SearchBody.png");
-        File outputfile = new File("src/resources/actual/actualScreenshot.png");
+        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/top.png");
+        File outputfile = new File("src/resources/actual/top.png");
+        ImageIO.write(actual, "png", outputfile);
+        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
+
+        int difSize = diffImage.getDiffSize();
+        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
+        atttAchScreenshatToAllureReport(actual, "actual");
+        atttAchScreenshatToAllureReport(expected, "expected");
+        atttAchScreenshatToAllureReport(diff, "diff");
+        Assert.assertTrue(difSize < 100);
+    }
+
+    @Test
+    public void checkLayoutSearchResultPage() throws  IOException {
+        Allure.label("testType", "screenshotDiff");
+        AShot aShot = new AShot();
+        aShot.coordsProvider(new WebDriverCoordsProvider());
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.selectSearchDirection("Прага");
+        searchHotel.clickCheck_inDate("2019-12-15");
+        searchHotel.clickCheck_outDate("2019-12-17");
+        searchHotel.clickSearchOffersButton();
+        SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
+        Set<By> ignoredElements = new HashSet<>();
+        ignoredElements.add(new By.ByXPath(".//input[@type='search']")); //
+        ignoredElements.add(new By.ByXPath("(.//*[@class='sb-date-field__display'])[1]")); //
+        ignoredElements.add(new By.ByXPath("(.//*[@class='sb-date-field__display'])[2]")); //
+
+        BufferedImage actual = aShot.ignoredElements(ignoredElements).takeScreenshot(webDriver, searchResultsHotelsPage.searchBoxElement).getImage();
+        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/filterBox.png");
+        File outputfile = new File("src/resources/actual/filterBox.png");
         ImageIO.write(actual, "png", outputfile);
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
 

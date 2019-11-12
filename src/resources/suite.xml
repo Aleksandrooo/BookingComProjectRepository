@@ -2,17 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="My test suite1" parallel="tests" thread-count="1">
 
-    <test verbose="1" name="bookingComTests" enabled="true">
+    <test verbose="1" name="Check Search Hotels" enabled="true">
         <classes>
             <class name="test.SearchHotelsTests" ></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests2" enabled="true">
+    <test verbose="1" name="Check SignIn form" enabled="true">
         <classes>
             <class name="test.BookingComSignInTests"></class>
         </classes>
     </test>
-    <test verbose="1" name="bookingComTests3"  enabled="true">
+    <test verbose="1" name="Check register form"  enabled="true">
         <classes>
             <class name="test.BookingComRegisterTests"></class>
         </classes>
@@ -30,6 +30,11 @@
     <test verbose="1" name="Сhange Search Options on search result page" enabled="true">
         <classes>
             <class name="test.СhangeSearchOptions"></class>
+        </classes>
+    </test>
+    <test verbose="1" name="Check Layout" enabled="true">
+        <classes>
+            <class name="test.BookingComLayoutTests"></class>
         </classes>
     </test>
 

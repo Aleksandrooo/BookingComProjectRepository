@@ -78,29 +78,17 @@ public class BaseTest {
     }
 
     public void makeScreenshotOfElement(WebElement webElement) {
-        //Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
-//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-//        searchHotel.clickRegisterButton();
-//        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, webElement).getImage();
-      //  BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
         File outputfile = new File("src/resources/actual/actualScreenshot.png");
         try {
             ImageIO.write(actual, "png", outputfile);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
-
-//        int difSize = diffImage.getDiffSize();
-//        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
         atttAchScreenshatToAllureReport(actual, "actual");
-//        atttAchScreenshatToAllureReport(expected, "expected");
-//        atttAchScreenshatToAllureReport(diff, "diff");
-//        Assert.assertTrue(difSize < 100);
     }
 
     public BufferedImage getBufferedImageFromFile(String fullPath) {
