@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 public class BookingComLayoutTests extends BaseTest {
@@ -28,9 +29,11 @@ public class BookingComLayoutTests extends BaseTest {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
 //        searchHotel.clickRegisterButton();
 //        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
+        Set<By> ignoredElements = new HashSet<>();
+        ignoredElements.add(new By.ByXPath(".//*[@data-visible='accommodation,flights,rentalcars']")); //
 
-        BufferedImage actual = aShot.addIgnoredElement(By.xpath(".//*[@id='bodyconstraint-inner']")).takeScreenshot(webDriver, searchHotel.bodyElement).getImage();
-//        BufferedImage actual = aShot.ignoredElements((Set<By>) searchHotel.bodyconstraintElement).takeScreenshot(webDriver, searchHotel.bodyElement).getImage();
+        BufferedImage actual = aShot.takeScreenshot(webDriver, searchHotel.topElement).getImage();
+//        BufferedImage actual = aShot.addIgnoredElement(By.xpath(".//*[@id='bodyconstraint-inner']")).takeScreenshot(webDriver, searchHotel.topElement).getImage();
         BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/SearchBody.png");
         File outputfile = new File("src/resources/actual/actualScreenshot.png");
         ImageIO.write(actual, "png", outputfile);

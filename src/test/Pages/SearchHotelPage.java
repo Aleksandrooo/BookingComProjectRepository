@@ -9,11 +9,20 @@ import org.openqa.selenium.support.PageFactory;
 public class SearchHotelPage {
     public WebDriver webDriver;
 
-    @FindBy(xpath = ".//*[@id='b2indexPage']")
-    public WebElement bodyElement;
+    @FindBy(xpath = ".//*[@id='top']")
+    public WebElement topElement;
 
-    @FindBy(xpath = ".//*[@id='bodyconstraint-inner']")
-    public WebElement bodyconstraintElement;
+    @FindBy(xpath = ".//*[@id='cross-product-bar']")
+    public WebElement barElement;
+
+    @FindBy(xpath = ".//*[@class='xpi__content__container']")
+    public WebElement searchContainerElement;
+
+//    @FindBy(xpath = ".//*[@id='b2indexPage']")
+//    public WebElement bodyElement;
+//
+//    @FindBy(xpath = ".//*[@id='bodyconstraint-inner']")
+//    public WebElement bodyconstraintElement;
 
     @FindBy(xpath = ".//input[@id='ss']")
     public WebElement searchInputElement;
