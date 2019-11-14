@@ -4,15 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultsHotelsPage {
+public class SearchResultsHotelsPage extends BasePage {
 
-    public WebDriver webDriver;
 //.//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ' and //*[@role='presentation']]
     @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
@@ -34,6 +32,12 @@ public class SearchResultsHotelsPage {
 
     @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")
     public WebElement distanseToCenterElement;
+
+    public By searchInputElementBy = By.xpath(".//input[@type='search']");
+
+    public By searchPopupBy = By.xpath(".//*[contains(class, 'sr-usp-overlay')]");
+
+
 
     public void clickSelectRoomButton(int numberOfRoom) {
         selectRoomButtonElement.get(numberOfRoom).click();
@@ -94,6 +98,8 @@ public class SearchResultsHotelsPage {
     @FindBy(xpath = ".//button[@data-sb-id='main']")
     public WebElement searchButtonElement;
 
+
+
     public void putSearchDirection(String direction) {
         inputSearchElement.clear();
         inputSearchElement.sendKeys(direction);
@@ -137,8 +143,7 @@ public class SearchResultsHotelsPage {
     //----------------------------------
 
     public SearchResultsHotelsPage(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
 }

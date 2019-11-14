@@ -1,6 +1,5 @@
 package test;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.comparison.ImageDiff;
-import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
-import test.Pages.BCRegisterPage;
 import test.Pages.SearchHotelPage;
 import test.Pages.SearchResultsHotelsPage;
 
@@ -31,6 +27,8 @@ public class BaseTest {
     public static final String BASE_APP_URL = "https://www.booking.com/index.uk.html";
 
     WebDriver webDriver;
+//
+//    ScrennUtils su = new ScrennUtils();
 
     @BeforeTest
     public void setUp(){

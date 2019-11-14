@@ -55,7 +55,7 @@ public class BookingComLayoutTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         Set<By> ignoredElements = new HashSet<>();
-        ignoredElements.add(new By.ByXPath(".//input[@type='search']")); //
+        ignoredElements.add(searchResultsHotelsPage.searchInputElementBy); //
         ignoredElements.add(new By.ByXPath("(.//*[@class='sb-date-field__display'])[1]")); //
         ignoredElements.add(new By.ByXPath("(.//*[@class='sb-date-field__display'])[2]")); //
 
