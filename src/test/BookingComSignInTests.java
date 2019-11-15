@@ -1,22 +1,12 @@
 package test;
 
-import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.comparison.ImageDiff;
-import ru.yandex.qatools.ashot.comparison.ImageDiffer;
-import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
-import test.Pages.BCSignInPage;
-import test.Pages.SearchHotelPage;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import test.pages.BCSignInPage;
+import test.pages.SearchHotelPage;
 
 public class BookingComSignInTests extends BaseTest{
 

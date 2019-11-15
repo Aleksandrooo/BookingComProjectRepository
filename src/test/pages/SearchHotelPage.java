@@ -1,13 +1,12 @@
-package test.Pages;
+package test.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class SearchHotelPage {
-    public WebDriver webDriver;
+public class SearchHotelPage extends BasePage {
+   // public WebDriver webDriver;
 
     @FindBy(xpath = ".//*[@id='top']")
     public WebElement topElement;
@@ -130,11 +129,6 @@ public class SearchHotelPage {
         signInButtonElement.click();
     }
 
-    public SearchHotelPage(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
-    }
-
     public void setGuestCountOptionsElement(int adults, String children, int rooms)  {
         guestCountOptionsElement.click();
         if (adults == 1) {
@@ -161,5 +155,9 @@ public class SearchHotelPage {
             }
         }
 
+    }
+
+    public SearchHotelPage(WebDriver webDriver) {
+        super(webDriver);
     }
 }

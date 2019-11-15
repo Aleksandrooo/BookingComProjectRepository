@@ -1,4 +1,4 @@
-package test.Pages;
+package test.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class BCBookPage extends BasePage{
-
-
 
     @FindBy(xpath = ".//*[@class='bp_leaving_users_light_box_content']")
     public WebElement infoBoxElement;
@@ -28,8 +26,6 @@ public class BCBookPage extends BasePage{
     @FindBy(xpath = ".//*[@class='bp-main-content']")
     public WebElement mainContentElement;
 
-
-
     public WebElement getAlertError() {
         return alertErrorElement;
     }
@@ -47,6 +43,5 @@ public class BCBookPage extends BasePage{
     public BCBookPage(WebDriver webDriver) {
         super(webDriver);
     }
-
 
 }

@@ -4,10 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import test.Pages.BCBookPage;
-import test.Pages.SearchHotelPage;
-import test.Pages.SearchResultsHotelsPage;
-import test.Pages.SelectedHotelPage;
+import test.pages.BCBookPage;
+import test.pages.SearchHotelPage;
+import test.pages.SearchResultsHotelsPage;
+import test.pages.SelectedHotelPage;
 
 public class BookHotelTests extends BaseTest {
 

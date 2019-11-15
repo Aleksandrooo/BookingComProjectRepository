@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import test.Pages.SearchHotelPage;
-import test.Pages.SearchResultsHotelsPage;
+import test.pages.SearchHotelPage;
+import test.pages.SearchResultsHotelsPage;
 
 import java.util.List;
 

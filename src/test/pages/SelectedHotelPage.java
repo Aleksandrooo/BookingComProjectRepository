@@ -1,15 +1,15 @@
-package test.Pages;
+package test.pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class SelectedHotelPage {
+public class SelectedHotelPage extends BasePage{
 
-    public WebDriver webDriver;
+  //  public WebDriver webDriver;
 
     @FindBy(xpath = ".//select[@class='hprt-nos-select']")
     public List<Select> selectList;
@@ -43,7 +43,6 @@ public class SelectedHotelPage {
     }
 
     public SelectedHotelPage(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 }

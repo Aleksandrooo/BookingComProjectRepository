@@ -8,10 +8,10 @@ import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
-import test.Pages.BCRegisterPage;
-import test.Pages.BCSignInPage;
-import test.Pages.SearchHotelPage;
-import test.Pages.SearchResultsHotelsPage;
+import test.pages.BCRegisterPage;
+import test.pages.BCSignInPage;
+import test.pages.SearchHotelPage;
+import test.pages.SearchResultsHotelsPage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

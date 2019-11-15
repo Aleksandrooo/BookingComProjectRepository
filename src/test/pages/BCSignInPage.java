@@ -1,12 +1,11 @@
-package test.Pages;
+package test.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class BCSignInPage {
-    WebDriver webDriver;
+public class BCSignInPage extends BasePage{
+   // WebDriver webDriver;
 
     @FindBy(xpath = ".//input[@id='username']")
     WebElement inputUsernameElement;
@@ -44,11 +43,6 @@ public class BCSignInPage {
     }
 
     public BCSignInPage(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
+        super(webDriver);
     }
-
-
-
-
 }

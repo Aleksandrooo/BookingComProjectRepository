@@ -1,12 +1,16 @@
 package test;
 
+import io.qameta.allure.Step;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import test.Pages.SearchHotelPage;
+import test.pages.SearchHotelPage;
+import test.pages.SearchResultsHotelsPage;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class SearchHotelsTests extends BaseTest {
 
@@ -48,5 +52,23 @@ public class SearchHotelsTests extends BaseTest {
     private String generateDate(int days){
         LocalDateTime nowDate = LocalDateTime.now();
         return  nowDate.plusDays(days).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    @Step
+    private void checkResult(int numberOfNight, int numberOfAdults)  {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
+        List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
+        for (String str : nightAndPeopleList) {
+            String[] strArray = str.split(",");
+            String night = strArray[0].substring(0, 2).trim();
+            String adult = strArray[1].substring(0, 3).trim();
+            Assert.assertEquals(Integer.parseInt(night), numberOfNight, "nightAndPeopleList");
+            Assert.assertEquals(Integer.parseInt(adult), numberOfAdults, "nightAndPeopleList");
+        }
     }
 }

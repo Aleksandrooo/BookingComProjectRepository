@@ -1,13 +1,12 @@
-package test.Pages;
+package test.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class BCRegisterPage {
+public class BCRegisterPage extends BasePage {
 
-    WebDriver webDriver;
+   // WebDriver webDriver;
 
     @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[1]")
     WebElement registerButtonElement;
@@ -33,11 +32,6 @@ public class BCRegisterPage {
     @FindBy(xpath = ".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']")
     private static WebElement registerPageShotElement;
 
-    public BCRegisterPage(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
-        this.webDriver = webDriver;
-    }
-
     public static WebElement getRegisterPageShotElement() {
         return registerPageShotElement;
     }
@@ -60,5 +54,9 @@ public class BCRegisterPage {
 
     public WebElement getConfirmedPasswordElement() {
         return confirmedPasswordElement;
+    }
+
+    public BCRegisterPage(WebDriver webDriver) {
+        super(webDriver);
     }
 }

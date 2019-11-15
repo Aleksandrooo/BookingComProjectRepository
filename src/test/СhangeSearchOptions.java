@@ -1,9 +1,13 @@
 package test;
 
+import io.qameta.allure.Step;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import test.Pages.SearchHotelPage;
-import test.Pages.SearchResultsHotelsPage;
+import test.pages.SearchHotelPage;
+import test.pages.SearchResultsHotelsPage;
+
+import java.util.List;
 
 public class СhangeSearchOptions extends  BaseTest {
 
@@ -31,4 +35,23 @@ public class СhangeSearchOptions extends  BaseTest {
         makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
         checkResult(2,3);
     }
+
+    @Step
+    private void checkResult(int numberOfNight, int numberOfAdults)  {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
+        List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
+        for (String str : nightAndPeopleList) {
+            String[] strArray = str.split(",");
+            String night = strArray[0].substring(0, 2).trim();
+            String adult = strArray[1].substring(0, 3).trim();
+            Assert.assertEquals(Integer.parseInt(night), numberOfNight, "nightAndPeopleList");
+            Assert.assertEquals(Integer.parseInt(adult), numberOfAdults, "nightAndPeopleList");
+        }
+    }
 }
+
