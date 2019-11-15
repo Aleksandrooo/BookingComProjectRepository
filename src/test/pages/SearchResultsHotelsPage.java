@@ -34,6 +34,8 @@ public class SearchResultsHotelsPage extends BasePage {
     public WebElement distanseToCenterElement;
 
     public By searchInputElementBy = By.xpath(".//input[@type='search']");
+    public By checkInDateElementBy = By.xpath("(.//*[@class='sb-searchbox__input sb-date-field__field sb-date__field-svg_icon'])[1]");
+    public By checkOutDateElementBy = By.xpath("(.//*[@class='sb-searchbox__input sb-date-field__field sb-date__field-svg_icon'])[2]");
 
     public By searchPopupBy = By.xpath(".//*[contains(class, 'sr-usp-overlay')]");
 

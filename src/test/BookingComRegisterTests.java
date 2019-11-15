@@ -13,29 +13,6 @@ public class BookingComRegisterTests extends BaseTest {
         super.clearCookiesAndSetUaLang();
     }
 
-//    @Test
-//    public void checkSighInLayoutPage() throws InterruptedException, IOException {
-//        Allure.label("testType", "screenshotDiff");
-//        AShot aShot = new AShot();
-//        aShot.coordsProvider(new WebDriverCoordsProvider());
-//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-//        searchHotel.clickRegisterButton();
-//        BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
-//
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
-//        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
-//        File outputfile = new File("src/resources/actual/RegisterPage.png");
-//        ImageIO.write(actual, "png", outputfile);
-//        ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
-//
-//        int difSize = diffImage.getDiffSize();
-//        BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-//        atttAchScreenshatToAllureReport(actual, "actual");
-//        atttAchScreenshatToAllureReport(expected, "expected");
-//        atttAchScreenshatToAllureReport(diff, "diff");
-//        Assert.assertTrue(difSize < 100);
-//    }
-
     @Test
     public void checkPutEmptiLogin(){
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);

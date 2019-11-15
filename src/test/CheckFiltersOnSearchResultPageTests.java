@@ -43,11 +43,13 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterStars(numberOfFilter);
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
+        searchResultsHotelsPage.waitInSeconds(5);
         List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
         checkStarsResult(expactedStar, starsList);
     }
 
+    @Step
     private void checkStarsResult(String expactedStar, List<String> starsList) {
         for (String actualStar:starsList){
             Assert.assertEquals(expactedStar, actualStar, "expactedStar - ");

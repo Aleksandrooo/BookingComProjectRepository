@@ -24,26 +24,28 @@ public class СhangeSearchOptions extends  BaseTest {
         searchHotel.clickCheck_outDate("2019-12-17");
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
-        Thread.sleep(5000);
-        makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
+//        Thread.sleep(5000);
+        searchResultsHotelsPage.waitInSeconds(5);
+        screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
         searchResultsHotelsPage.putSearchDirection("Вена");
         searchResultsHotelsPage.setCheckInDay(14);
         searchResultsHotelsPage.setCheckOutDay(16);
         searchResultsHotelsPage.setGroupAdults(3);
         searchResultsHotelsPage.setGroupRooms(3);
         searchResultsHotelsPage.clickSearchButton();
-        makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
+        screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
         checkResult(2,3);
     }
 
     @Step
     private void checkResult(int numberOfNight, int numberOfAdults)  {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
+        searchResultsHotelsPage.waitInSeconds(5);
         List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
         for (String str : nightAndPeopleList) {
             String[] strArray = str.split(",");

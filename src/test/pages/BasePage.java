@@ -6,10 +6,16 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+
 public class BasePage {
 
     public WebDriver webDriver;
 
+    public void switchToTab(int index){
+        ArrayList<String> tabs = new ArrayList<String>(webDriver.getWindowHandles());
+        webDriver.switchTo().window(tabs.get(index)); //switches to new tab
+    }
 
     public void waitElementToBeClickable(By by){
         WebDriverWait wait = new WebDriverWait(webDriver, 60);

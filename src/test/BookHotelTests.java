@@ -25,21 +25,24 @@ public class BookHotelTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterPrice(1);
-        Thread.sleep(2000);
+      //  Thread.sleep(2000);
+        searchResultsHotelsPage.waitInSeconds(5);
         searchResultsHotelsPage.clickSelectRoomButton(1);
-        Thread.sleep(4000);
-        switchToTab(1);
+//        Thread.sleep(4000);
+        searchResultsHotelsPage.waitInSeconds(4);
+        searchResultsHotelsPage.switchToTab(1);
         SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
         selectedHotelPage.setNumberOfRoom(1, 1);
-        makeScreenshotOfElement(selectedHotelPage.roomsAvailabilityElement);
+        screen.makeScreenshotOfElement(selectedHotelPage.roomsAvailabilityElement);
         selectedHotelPage.clickBookingButton(1);
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
+        selectedHotelPage.waitInSeconds(1);
         BCBookPage bcBookPage = new BCBookPage(webDriver);
         bcBookPage.closeInfoBox();
         bcBookPage.clickBookButton();
         bcBookPage.closeInfoBox();
         WebElement info = bcBookPage.getAlertError();
-        makeScreenshotOfElement(bcBookPage.mainContentElement);
+        screen.makeScreenshotOfElement(bcBookPage.mainContentElement);
 
         Assert.assertEquals(info.getAttribute("data-component"),"bp/top-validation-errors", "bui-alert--error");
     }

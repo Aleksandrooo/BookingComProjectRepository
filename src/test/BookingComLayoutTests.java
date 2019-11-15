@@ -13,9 +13,7 @@ import test.pages.BCSignInPage;
 import test.pages.SearchHotelPage;
 import test.pages.SearchResultsHotelsPage;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,16 +28,15 @@ public class BookingComLayoutTests extends BaseTest {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, searchHotel.topElement).getImage();
-        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/top.png");
-        File outputfile = new File("src/resources/actual/top.png");
-        ImageIO.write(actual, "png", outputfile);
+        BufferedImage expected = screen.getBufferedImageFromFile("src/resources/Shots/top.png");
+        screen.saveImageToFile(actual, "src/resources/actual/top.png", "png");
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
 
         int difSize = diffImage.getDiffSize();
         BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-        atttAchScreenshatToAllureReport(actual, "actual");
-        atttAchScreenshatToAllureReport(expected, "expected");
-        atttAchScreenshatToAllureReport(diff, "diff");
+        screen.attachScreenshotToAllureReport(actual, "actual");
+        screen.attachScreenshotToAllureReport(expected, "expected");
+        screen.attachScreenshotToAllureReport(diff, "diff");
         Assert.assertTrue(difSize < 100);
     }
 
@@ -55,21 +52,20 @@ public class BookingComLayoutTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         Set<By> ignoredElements = new HashSet<>();
-        ignoredElements.add(searchResultsHotelsPage.searchInputElementBy); //
-        ignoredElements.add(new By.ByXPath("(.//*[@class='sb-date-field__display'])[1]")); //
-        ignoredElements.add(new By.ByXPath("(.//*[@class='sb-date-field__display'])[2]")); //
+        ignoredElements.add(searchResultsHotelsPage.searchInputElementBy);
+        ignoredElements.add(searchResultsHotelsPage.checkInDateElementBy);
+        ignoredElements.add(searchResultsHotelsPage.checkOutDateElementBy);
 
         BufferedImage actual = aShot.ignoredElements(ignoredElements).takeScreenshot(webDriver, searchResultsHotelsPage.searchBoxElement).getImage();
-        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/filterBox.png");
-        File outputfile = new File("src/resources/actual/filterBox.png");
-        ImageIO.write(actual, "png", outputfile);
+        BufferedImage expected = screen.getBufferedImageFromFile("src/resources/Shots/filterBox.png");
+        screen.saveImageToFile(actual, "src/resources/actual/filterBox.png", "png");
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
 
         int difSize = diffImage.getDiffSize();
         BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-        atttAchScreenshatToAllureReport(actual, "actual");
-        atttAchScreenshatToAllureReport(expected, "expected");
-        atttAchScreenshatToAllureReport(diff, "diff");
+        screen.attachScreenshotToAllureReport(actual, "actual");
+        screen.attachScreenshotToAllureReport(expected, "expected");
+        screen.attachScreenshotToAllureReport(diff, "diff");
         Assert.assertTrue(difSize < 100);
     }
 
@@ -83,16 +79,15 @@ public class BookingComLayoutTests extends BaseTest {
         BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
-        BufferedImage expected = getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
-        File outputfile = new File("src/resources/actual/RegisterPage.png");
-        ImageIO.write(actual, "png", outputfile);
+        BufferedImage expected = screen.getBufferedImageFromFile("src/resources/Shots/RegisterPage.png");
+        screen.saveImageToFile(actual, "src/resources/actual/RegisterPage.png", "png");
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
 
         int difSize = diffImage.getDiffSize();
         BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-        atttAchScreenshatToAllureReport(actual, "actual");
-        atttAchScreenshatToAllureReport(expected, "expected");
-        atttAchScreenshatToAllureReport(diff, "diff");
+        screen.attachScreenshotToAllureReport(actual, "actual");
+        screen.attachScreenshotToAllureReport(expected, "expected");
+        screen.attachScreenshotToAllureReport(diff, "diff");
         Assert.assertTrue(difSize < 100);
     }
 
@@ -106,16 +101,15 @@ public class BookingComLayoutTests extends BaseTest {
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
         BufferedImage actual = aShot.takeScreenshot(webDriver, bcSignInPage.getSignInPageShotElement()).getImage();
-        BufferedImage expected = this.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
-        File outputfile = new File("src/resources/actual/SighInPage.png");
-        ImageIO.write(actual, "png", outputfile);
+        BufferedImage expected = screen.getBufferedImageFromFile("src/resources/Shots/SighInPage.png");
+        screen.saveImageToFile(actual, "src/resources/actual/SighInPage.png","png");
 
         ImageDiff diffImage = new ImageDiffer().makeDiff(actual, expected);
         int difSize = diffImage.getDiffSize();
         BufferedImage diff = diffImage.getMarkedImage(); // comparison result with marked differences
-        atttAchScreenshatToAllureReport(actual, "actual");
-        atttAchScreenshatToAllureReport(expected, "expected");
-        atttAchScreenshatToAllureReport(diff, "diff");
+        screen.attachScreenshotToAllureReport(actual, "actual");
+        screen.attachScreenshotToAllureReport(expected, "expected");
+        screen.attachScreenshotToAllureReport(diff, "diff");
         Assert.assertTrue(difSize < 100);
     }
 }
