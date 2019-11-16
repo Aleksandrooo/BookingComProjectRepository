@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SearchHotelPage extends BasePage {
-   // public WebDriver webDriver;
-
     @FindBy(xpath = ".//*[@id='top']")
     public WebElement topElement;
 
@@ -75,39 +73,49 @@ public class SearchHotelPage extends BasePage {
     @FindBy(xpath = ".//a[@hreflang='uk']")
     public WebElement selectUkrLanguageElement;
 
-    public void  setEurCurrency(){
+    public By listOfDirectionElement  = new By.ByXPath(".//*[@class='c-autocomplete__list sb-autocomplete__list sb-autocomplete__list-with_photos']");
+    public By calendarElement  = new By.ByXPath(".//*[@class='bui-calendar']");
+
+    public void setEurCurrency() {
         selectedCurrencyElement.click();
         selectEURElement.click();
     }
 
     public void setLanguage(String languageCode) {
         selectedLanguageElement.click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        WebElement selectUkrLanguageElement = webDriver.findElement(By.xpath(".//a[@hreflang='" + languageCode + "']"));
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        By languageCodeBy = new By.ByXPath(".//a[@hreflang='" + languageCode + "']");
+//        waitElementToBeClickable(languageCodeBy);
+        waitElementToBeVisibilityOf(languageCodeBy);
+        WebElement selectUkrLanguageElement = webDriver.findElement(languageCodeBy);
         selectUkrLanguageElement.click();
     }
 
     public void selectSearchDirection(String value) {
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        waitElementToBeClickable(listOfDirectionElement);
+        waitElementToBeVisibilityOf(listOfDirectionElement);
         selectSearchDirectionElement.click();
     }
 
     public void clickCheck_inDate(String date) {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        waitElementToBeClickable(calendarElement);
+        waitElementToBeVisibilityOf(calendarElement);
         check_inElement = webDriver.findElement(By.xpath(".//td[@data-date='" + date + "']"));
         check_inElement.click();
     }
@@ -129,7 +137,7 @@ public class SearchHotelPage extends BasePage {
         signInButtonElement.click();
     }
 
-    public void setGuestCountOptionsElement(int adults, String children, int rooms)  {
+    public void setGuestCountOptionsElement(int adults, String children, int rooms) {
         guestCountOptionsElement.click();
         if (adults == 1) {
             adultCountMinusElement.click();
@@ -137,21 +145,26 @@ public class SearchHotelPage extends BasePage {
         if (adults >= 3) {
             for (int i = 2; i < adults; i++) {
                 adultCountPlusElement.click();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                waitElementToBeClickable(adultCountPlusElement);
+                waitElementToBeVisibilityOf(adultCountPlusElement);
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
         }
         if (rooms >= 2) {
             for (int i = 1; i < rooms; i++) {
                 roomsCountPlusElement.click();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                waitElementToBeClickable(roomsCountPlusElement);
+                waitElementToBeVisibilityOf(roomsCountPlusElement);
+
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
         }
 

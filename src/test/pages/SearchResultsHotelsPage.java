@@ -11,8 +11,8 @@ import java.util.List;
 
 public class SearchResultsHotelsPage extends BasePage {
 
-//.//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ' and //*[@role='presentation']]
-    @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
+//    @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
+    @FindBy(xpath = ".//i[contains(@class,'bk-icon-stars')]//ancestor::div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
 
     @FindBy(xpath = ".//*[@id='filter_price']//*[@class=' filterelement        ']")
@@ -27,7 +27,8 @@ public class SearchResultsHotelsPage extends BasePage {
     @FindBy(xpath = ".//*[@class='sr-cta-button-row']")
     public List<WebElement> selectRoomButtonElement;
 
-    @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
+//    @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
+    @FindBy(xpath = ".//*[@class='room_details ']/div[not(@style='display: none;')]//div[@class='bui-price-display__value prco-inline-block-maker-helper']")
     public List<WebElement> priceRoomElementsList;
 
     @FindBy(xpath = "(.//*[@class='sr_card_address_line']/span)[2]")

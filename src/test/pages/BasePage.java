@@ -2,6 +2,7 @@ package test.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,9 +18,22 @@ public class BasePage {
         webDriver.switchTo().window(tabs.get(index)); //switches to new tab
     }
 
+    public void waitElementToBeVisibilityOf(By by){
+        waitElementToBeVisibilityOf(webDriver.findElement(by));
+    }
+    public void waitElementToBeVisibilityOf(WebElement webElement){
+        WebDriverWait wait = new WebDriverWait(webDriver, 60);
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
     public void waitElementToBeClickable(By by){
         WebDriverWait wait = new WebDriverWait(webDriver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public void waitElementToBeClickable(WebElement webElement){
+        WebDriverWait wait = new WebDriverWait(webDriver, 60);
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public void waitUntilElementNoVisible(By by) {

@@ -1,5 +1,6 @@
 package test.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +22,8 @@ public class BCSignInPage extends BasePage{
 
     @FindBy(xpath = ".//*[@class='access-panel bui-spacer--large box-shadow nw-access-panel']")
     WebElement signInPageShotElement;
+
+    public By signInPageElement = new By.ByXPath(".//*[@class='bui_font_display_two bui_font_heading--bold bui-spacer--medium nw-step-header']");
 
     public void putValueInputUsernameElementField(String value) {
         inputUsernameElement.sendKeys(value);
