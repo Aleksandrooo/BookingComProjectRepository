@@ -21,6 +21,7 @@ public class BasePage {
     public void waitElementToBeVisibilityOf(By by){
         waitElementToBeVisibilityOf(webDriver.findElement(by));
     }
+
     public void waitElementToBeVisibilityOf(WebElement webElement){
         WebDriverWait wait = new WebDriverWait(webDriver, 60);
         wait.until(ExpectedConditions.visibilityOf(webElement));
