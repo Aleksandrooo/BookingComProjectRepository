@@ -20,7 +20,7 @@ public class BCBookPage extends BasePage{
     @FindBy(xpath = ".//*[@name='book']")
     public WebElement bookElement;
 
-    @FindBy(xpath = ".//*[@class='bui-alert bui-alert--error bui-alert--large bui-u-bleed@small']")
+    @FindBy(xpath = ".//div[@data-component='bp/top-validation-errors']")
     public WebElement alertErrorElement;
 
     @FindBy(xpath = ".//*[@class='bp-main-content']")

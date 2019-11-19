@@ -39,8 +39,7 @@ public class BasePage {
 
     public void waitUntilElementNoVisible(By by) {
         WebDriverWait wait = new WebDriverWait(webDriver, 20);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
-    }
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(by)); }
 
     public void waitInSeconds(int seconds){
         try {

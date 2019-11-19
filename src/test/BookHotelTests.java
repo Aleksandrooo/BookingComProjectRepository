@@ -17,7 +17,7 @@ public class BookHotelTests extends BaseTest {
     }
 
     @Test
-    public void checkBookHotel() throws InterruptedException {
+    public void checkBookHotel() {
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection("Прага");
         searchHotel.clickCheck_inDate("2019-12-15");
@@ -25,20 +25,14 @@ public class BookHotelTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterPrice(1);
-      //  Thread.sleep(2000);
-        //TODO
-        searchResultsHotelsPage.waitInSeconds(5);
+        searchResultsHotelsPage.waitInSeconds(6);
         searchResultsHotelsPage.clickSelectRoomButton(1);
-//        Thread.sleep(4000);
-        //TODO
-        searchResultsHotelsPage.waitInSeconds(4);
+        searchResultsHotelsPage.waitInSeconds(5);
         searchResultsHotelsPage.switchToTab(1);
         SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
         selectedHotelPage.setNumberOfRoom(1, 1);
         screen.makeScreenshotOfElement(selectedHotelPage.roomsAvailabilityElement);
-        selectedHotelPage.clickBookingButton(1);
-//        Thread.sleep(1000);
-        //TODO
+        selectedHotelPage.clickBookingButton();
         selectedHotelPage.waitInSeconds(1);
         BCBookPage bcBookPage = new BCBookPage(webDriver);
         bcBookPage.closeInfoBox();
@@ -46,7 +40,7 @@ public class BookHotelTests extends BaseTest {
         bcBookPage.closeInfoBox();
         WebElement info = bcBookPage.getAlertError();
         screen.makeScreenshotOfElement(bcBookPage.mainContentElement);
-
+        bcBookPage.closeInfoBox();
         Assert.assertEquals(info.getAttribute("data-component"),"bp/top-validation-errors", "bui-alert--error");
     }
 }

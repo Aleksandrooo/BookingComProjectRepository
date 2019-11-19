@@ -25,9 +25,8 @@ public class SelectedHotelPage extends BasePage{
         dropDown.selectByIndex(numberOfRooms);
     }
 
-    public void clickBookingButton(int roomIndex){
+    public void clickBookingButton(){
         bookingButtonElement.click();
-//        bookingButtonElement.get(roomIndex).click(); TODO
     }
 
     public SelectedHotelPage(WebDriver webDriver) {

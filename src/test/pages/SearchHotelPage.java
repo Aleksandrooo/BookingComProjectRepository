@@ -67,8 +67,8 @@ public class SearchHotelPage extends BasePage {
     @FindBy(xpath = ".//a[@hreflang='uk']")
     public WebElement selectUkrLanguageElement;
 
-    public By listOfDirectionElement  = new By.ByXPath(".//*[@class='c-autocomplete__list sb-autocomplete__list sb-autocomplete__list-with_photos']");
-    public By calendarElement  = new By.ByXPath(".//*[@class='bui-calendar']");
+    public By listOfDirectionElement  = new By.ByXPath("(.//li[@data-list-item])[1]");
+    public By calendarElement  = new By.ByXPath("(.//*[@class='bui-calendar__date'])[1]");
 
     public void setEurCurrency() {
         selectedCurrencyElement.click();
@@ -77,11 +77,8 @@ public class SearchHotelPage extends BasePage {
 
     public void setLanguage(String languageCode) {
         selectedLanguageElement.click();
-//        TODO
-        waitInSeconds(2);
         By languageCodeBy = new By.ByXPath(".//a[@hreflang='" + languageCode + "']");
-//        waitElementToBeClickable(languageCodeBy);
-//        waitElementToBeVisibilityOf(languageCodeBy);
+        waitElementToBeClickable(languageCodeBy);
         WebElement selectUkrLanguageElement = webDriver.findElement(languageCodeBy);
         selectUkrLanguageElement.click();
     }
@@ -89,23 +86,18 @@ public class SearchHotelPage extends BasePage {
     public void selectSearchDirection(String value) {
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
-//        TODO
-        waitInSeconds(2);
-//        waitElementToBeClickable(listOfDirectionElement);
-//        waitElementToBeVisibilityOf(listOfDirectionElement);
+        waitElementToBeClickable(listOfDirectionElement);
         selectSearchDirectionElement.click();
     }
 
     public void clickCheck_inDate(String date) {
-//        TODO
-        waitInSeconds(2);
-//        waitElementToBeClickable(calendarElement);
-//        waitElementToBeVisibilityOf(calendarElement);
+        waitElementToBeClickable(calendarElement);
         check_inElement = webDriver.findElement(By.xpath(".//td[@data-date='" + date + "']"));
         check_inElement.click();
     }
 
     public void clickCheck_outDate(String date) {
+        waitElementToBeClickable(calendarElement);
         check_outElement = webDriver.findElement(By.xpath(".//td[@data-date='" + date + "']"));
         check_outElement.click();
     }
@@ -130,18 +122,12 @@ public class SearchHotelPage extends BasePage {
         if (adults >= 3) {
             for (int i = 2; i < adults; i++) {
                 adultCountPlusElement.click();
-//                TODO
-//                waitElementToBeClickable(adultCountPlusElement);
-//                waitElementToBeVisibilityOf(adultCountPlusElement);
                 waitInSeconds(1);
             }
         }
         if (rooms >= 2) {
             for (int i = 1; i < rooms; i++) {
                 roomsCountPlusElement.click();
-//                TODO
-//                waitElementToBeClickable(roomsCountPlusElement);
-//                waitElementToBeVisibilityOf(roomsCountPlusElement);
                 waitInSeconds(1);
             }
         }

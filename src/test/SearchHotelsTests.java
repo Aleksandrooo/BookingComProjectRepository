@@ -49,14 +49,8 @@ public class SearchHotelsTests extends BaseTest {
 
     @Step
     private void checkResult(int numberOfNight, int numberOfAdults) {
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-// TODO
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
-        searchResultsHotelsPage.waitInSeconds(5);
+        searchResultsHotelsPage.waitInSeconds(6);
         List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();
         for (String str : nightAndPeopleList) {
             String[] strArray = str.split(",");
