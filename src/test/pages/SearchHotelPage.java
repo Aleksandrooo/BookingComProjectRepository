@@ -15,12 +15,6 @@ public class SearchHotelPage extends BasePage {
     @FindBy(xpath = ".//*[@class='xpi__content__container']")
     public WebElement searchContainerElement;
 
-//    @FindBy(xpath = ".//*[@id='b2indexPage']")
-//    public WebElement bodyElement;
-//
-//    @FindBy(xpath = ".//*[@id='bodyconstraint-inner']")
-//    public WebElement bodyconstraintElement;
-
     @FindBy(xpath = ".//input[@id='ss']")
     public WebElement searchInputElement;
 
@@ -83,14 +77,11 @@ public class SearchHotelPage extends BasePage {
 
     public void setLanguage(String languageCode) {
         selectedLanguageElement.click();
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+//        TODO
+        waitInSeconds(2);
         By languageCodeBy = new By.ByXPath(".//a[@hreflang='" + languageCode + "']");
 //        waitElementToBeClickable(languageCodeBy);
-        waitElementToBeVisibilityOf(languageCodeBy);
+//        waitElementToBeVisibilityOf(languageCodeBy);
         WebElement selectUkrLanguageElement = webDriver.findElement(languageCodeBy);
         selectUkrLanguageElement.click();
     }
@@ -98,24 +89,18 @@ public class SearchHotelPage extends BasePage {
     public void selectSearchDirection(String value) {
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+//        TODO
+        waitInSeconds(2);
 //        waitElementToBeClickable(listOfDirectionElement);
-        waitElementToBeVisibilityOf(listOfDirectionElement);
+//        waitElementToBeVisibilityOf(listOfDirectionElement);
         selectSearchDirectionElement.click();
     }
 
     public void clickCheck_inDate(String date) {
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+//        TODO
+        waitInSeconds(2);
 //        waitElementToBeClickable(calendarElement);
-        waitElementToBeVisibilityOf(calendarElement);
+//        waitElementToBeVisibilityOf(calendarElement);
         check_inElement = webDriver.findElement(By.xpath(".//td[@data-date='" + date + "']"));
         check_inElement.click();
     }
