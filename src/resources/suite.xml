@@ -2,26 +2,26 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="My test suite1" parallel="tests" thread-count="1">
 
-<!--    <test verbose="1" name="Check Search Hotels" enabled="true">-->
-<!--        <classes>-->
-<!--            <class name="test.SearchHotelsTests" ></class>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test verbose="1" name="Check SignIn form" enabled="true">-->
-<!--        <classes>-->
-<!--            <class name="test.BookingComSignInTests"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test verbose="1" name="Check register form"  enabled="true">-->
-<!--        <classes>-->
-<!--            <class name="test.BookingComRegisterTests"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
-    <!--<test verbose="1" name="CheckFiltersOnSearchResultPageTests" enabled="true">-->
-        <!--<classes>-->
-            <!--<class name="test.CheckFiltersOnSearchResultPageTests"></class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test verbose="1" name="Check Search Hotels" enabled="true">
+        <classes>
+            <class name="test.SearchHotelsTests" ></class>
+        </classes>
+    </test>
+    <test verbose="1" name="Check SignIn form" enabled="true">
+        <classes>
+            <class name="test.BookingComSignInTests"></class>
+        </classes>
+    </test>
+    <test verbose="1" name="Check register form"  enabled="true">
+        <classes>
+            <class name="test.BookingComRegisterTests"></class>
+        </classes>
+    </test>
+    <test verbose="1" name="CheckFiltersOnSearchResultPageTests" enabled="true">
+        <classes>
+            <class name="test.CheckFiltersOnSearchResultPageTests"></class>
+        </classes>
+    </test>
     <test verbose="1" name="Create reservation - 1 room 2 adult" enabled="true">
         <classes>
             <class name="test.BookHotelTests"></class>

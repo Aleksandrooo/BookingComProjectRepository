@@ -2,15 +2,12 @@ package test;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import test.pages.SearchHotelPage;
 import test.utils.ScreenshotUtils;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -23,13 +20,13 @@ public class BaseTest {
     @Step
     @BeforeTest
     public void setUp(){
-//        webDriver = new ChromeDriver();
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        try {
-            webDriver = new RemoteWebDriver(new URL("http://10.65.146.65:4444"),capabilities);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        webDriver = new ChromeDriver();
+//        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//        try {
+//            webDriver = new RemoteWebDriver(new URL("http://10.65.146.65:4444"),capabilities);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
         webDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         webDriver.get(BASE_APP_URL);
         webDriver.manage().window().maximize();
@@ -49,47 +46,4 @@ public class BaseTest {
         webDriver.quit();
     }
 
-//    public void switchToTab(int index){
-//        ArrayList<String> tabs = new ArrayList<String>(webDriver.getWindowHandles());
-//        webDriver.switchTo().window(tabs.get(index)); //switches to new tab
-//    }
-
-//    public void makeScreenshotOfElement(WebElement webElement) {
-//        AShot aShot = new AShot();
-//        aShot.coordsProvider(new WebDriverCoordsProvider());
-//
-//        BufferedImage actual = aShot.takeScreenshot(webDriver, webElement).getImage();
-//        File outputfile = new File("src/resources/actual/actualScreenshot.png");
-//        try {
-//            ImageIO.write(actual, "png", outputfile);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        attachScreenshotToAllureReport(actual, "actual");
-//    }
-//
-//    public BufferedImage getBufferedImageFromFile(String fullPath) {
-//        BufferedImage image = null;
-//        try {
-//            image = ImageIO.read(new File(fullPath));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return image;
-//    }
-//
-//    @Attachment(value = "{filename}", type = "image/png")
-//    public byte[] attachScreenshotToAllureReport(BufferedImage screenshot, String filename) {
-//        byte[] imageInByte = new byte[0];
-//        try {
-//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            ImageIO.write(screenshot, "png", baos);
-//            baos.flush();
-//            imageInByte = baos.toByteArray();
-//            baos.close();
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return imageInByte;
-//    }
 }

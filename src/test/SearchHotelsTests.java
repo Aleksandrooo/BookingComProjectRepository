@@ -32,8 +32,6 @@ public class SearchHotelsTests extends BaseTest {
 
     @DataProvider(name = "searchOptions")
     public Object[][] testData1() {
-      //  LocalDateTime nowDate = LocalDateTime.now();
-
         return new Object[][]{
                 //direction,  checkIn, ckeckOut, nights, adults, children, rooms
                 {"Прага", generateDate(20), generateDate(25), 5, 3, "", 1},
@@ -56,7 +54,7 @@ public class SearchHotelsTests extends BaseTest {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-//
+// TODO
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.waitInSeconds(5);
         List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();

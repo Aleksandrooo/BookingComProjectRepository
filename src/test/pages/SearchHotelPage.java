@@ -145,26 +145,19 @@ public class SearchHotelPage extends BasePage {
         if (adults >= 3) {
             for (int i = 2; i < adults; i++) {
                 adultCountPlusElement.click();
+//                TODO
 //                waitElementToBeClickable(adultCountPlusElement);
-                waitElementToBeVisibilityOf(adultCountPlusElement);
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+//                waitElementToBeVisibilityOf(adultCountPlusElement);
+                waitInSeconds(1);
             }
         }
         if (rooms >= 2) {
             for (int i = 1; i < rooms; i++) {
                 roomsCountPlusElement.click();
+//                TODO
 //                waitElementToBeClickable(roomsCountPlusElement);
-                waitElementToBeVisibilityOf(roomsCountPlusElement);
-
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+//                waitElementToBeVisibilityOf(roomsCountPlusElement);
+                waitInSeconds(1);
             }
         }
 

@@ -14,14 +14,13 @@ import test.pages.SearchHotelPage;
 import test.pages.SearchResultsHotelsPage;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
 public class BookingComLayoutTests extends BaseTest {
 
     @Test
-    public void checkLayoutSearchPage() throws  IOException {
+    public void checkLayoutSearchPage(){
         Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
@@ -41,7 +40,7 @@ public class BookingComLayoutTests extends BaseTest {
     }
 
     @Test
-    public void checkLayoutSearchResultPage() throws  IOException {
+    public void checkLayoutSearchResultPage(){
         Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
@@ -70,7 +69,7 @@ public class BookingComLayoutTests extends BaseTest {
     }
 
     @Test
-    public void checkbcRegisterLayoutPage() throws IOException {
+    public void checkbcRegisterLayoutPage(){
         Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
@@ -92,7 +91,7 @@ public class BookingComLayoutTests extends BaseTest {
     }
 
     @Test
-    public void checkSighInLayoutPage() throws InterruptedException, IOException {
+    public void checkSighInLayoutPage(){
         Allure.label("testType", "screenshotDiff");
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.clickSighInButton();

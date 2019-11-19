@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SearchResultsHotelsPage extends BasePage {
 
-//    @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
+    //    @FindBy(xpath = ".//div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     @FindBy(xpath = ".//i[contains(@class,'bk-icon-stars')]//ancestor::div[@class='sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout                 ']")
     public List<WebElement> hotelSearchResultsTableElement;
 
@@ -27,7 +27,7 @@ public class SearchResultsHotelsPage extends BasePage {
     @FindBy(xpath = ".//*[@class='sr-cta-button-row']")
     public List<WebElement> selectRoomButtonElement;
 
-//    @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
+    //    @FindBy(xpath = ".//*[@class='bui-price-display__value prco-inline-block-maker-helper']")
     @FindBy(xpath = ".//*[@class='room_details ']/div[not(@style='display: none;')]//div[@class='bui-price-display__value prco-inline-block-maker-helper']")
     public List<WebElement> priceRoomElementsList;
 
@@ -39,7 +39,6 @@ public class SearchResultsHotelsPage extends BasePage {
     public By checkOutDateElementBy = By.xpath("(.//*[@class='sb-searchbox__input sb-date-field__field sb-date__field-svg_icon'])[2]");
 
     public By searchPopupBy = By.xpath(".//*[contains(class, 'sr-usp-overlay')]");
-
 
 
     public void clickSelectRoomButton(int numberOfRoom) {
@@ -102,7 +101,6 @@ public class SearchResultsHotelsPage extends BasePage {
     public WebElement searchButtonElement;
 
 
-
     public void putSearchDirection(String direction) {
         inputSearchElement.clear();
         inputSearchElement.sendKeys(direction);
@@ -110,22 +108,16 @@ public class SearchResultsHotelsPage extends BasePage {
 
     public void setCheckInDay(int checkInDay) {
         checkInDayElement.click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        TODO
+        waitInSeconds(1);
         WebElement setValueCheckInDayElement = webDriver.findElement(By.xpath("(.//*[@class='c2-day-inner' and text()=\"" + checkInDay + "\"])[3]"));
         setValueCheckInDayElement.click();
     }
 
     public void setCheckOutDay(int checkOutDay) {
         checkOutDayElement.click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        TODO
+        waitInSeconds(1);
         WebElement setValueCheckOutDayElement = webDriver.findElement(By.xpath("(.//*[@class='c2-day-inner' and text()=\"" + checkOutDay + "\"])[19]"));
         setValueCheckOutDayElement.click();
     }

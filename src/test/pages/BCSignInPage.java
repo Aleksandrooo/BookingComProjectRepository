@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class BCSignInPage extends BasePage{
-   // WebDriver webDriver;
 
     @FindBy(xpath = ".//input[@id='username']")
     WebElement inputUsernameElement;

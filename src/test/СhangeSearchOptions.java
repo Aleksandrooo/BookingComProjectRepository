@@ -17,7 +17,7 @@ public class СhangeSearchOptions extends  BaseTest {
     }
 
     @Test
-    public void CheckChangeSearchOptions() throws InterruptedException {
+    public void CheckChangeSearchOptions(){
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection("Прага");
         searchHotel.clickCheck_inDate("2019-12-14");
@@ -44,6 +44,7 @@ public class СhangeSearchOptions extends  BaseTest {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
+        //TODO
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.waitInSeconds(5);
         List<String> nightAndPeopleList = searchResultsHotelsPage.getNumberOfPeopleAndNigntsString();

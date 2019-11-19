@@ -26,9 +26,11 @@ public class BookHotelTests extends BaseTest {
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterPrice(1);
       //  Thread.sleep(2000);
+        //TODO
         searchResultsHotelsPage.waitInSeconds(5);
         searchResultsHotelsPage.clickSelectRoomButton(1);
 //        Thread.sleep(4000);
+        //TODO
         searchResultsHotelsPage.waitInSeconds(4);
         searchResultsHotelsPage.switchToTab(1);
         SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
@@ -36,6 +38,7 @@ public class BookHotelTests extends BaseTest {
         screen.makeScreenshotOfElement(selectedHotelPage.roomsAvailabilityElement);
         selectedHotelPage.clickBookingButton(1);
 //        Thread.sleep(1000);
+        //TODO
         selectedHotelPage.waitInSeconds(1);
         BCBookPage bcBookPage = new BCBookPage(webDriver);
         bcBookPage.closeInfoBox();

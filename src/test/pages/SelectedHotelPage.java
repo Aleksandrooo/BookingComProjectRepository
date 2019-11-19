@@ -9,15 +9,9 @@ import java.util.List;
 
 public class SelectedHotelPage extends BasePage{
 
-  //  public WebDriver webDriver;
-
     @FindBy(xpath = ".//select[@class='hprt-nos-select']")
-    public List<Select> selectList;
-    //public List<WebElement> numberOfRoomSelectElement;
-
-    @FindBy(xpath = "(.//select[@class='hprt-nos-select'])[1]")
-    public WebElement numberOfRoomElement;
-//    public Select select;
+    public List<WebElement> numberOfRoomElement;
+//    public WebElement numberOfRoomElement;
 
     @FindBy(xpath = ".//*[@class='hprt-reservation-cta']")
     public WebElement bookingButtonElement;
@@ -27,19 +21,13 @@ public class SelectedHotelPage extends BasePage{
     public WebElement roomsAvailabilityElement;
 
     public void setNumberOfRoom(int roomIndex, int numberOfRooms ){
-//        WebElement webElement = webDriver.findElement(By.xpath(".//*[@class='hprt-table-header-cell hprt-table-header-rooms-number']"));
-//        System.out.println(webElement.getText());
-        //numberOfRoomSelectElement.get(roomIndex).click();
-        //Select select = new Select(numberOfRoomSelectElement.get(roomIndex));
-//        selectList.get(0).getOptions();
-//        selectList.get(roomIndex).selectByIndex(numberOfRooms);
-        Select dropDown = new Select(numberOfRoomElement);
+        Select dropDown = new Select(numberOfRoomElement.get(roomIndex));
         dropDown.selectByIndex(numberOfRooms);
     }
 
     public void clickBookingButton(int roomIndex){
         bookingButtonElement.click();
-//        bookingButtonElement.get(roomIndex).click();
+//        bookingButtonElement.get(roomIndex).click(); TODO
     }
 
     public SelectedHotelPage(WebDriver webDriver) {

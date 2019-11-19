@@ -18,7 +18,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
     }
 
     @Test (dataProvider ="priceFilter", enabled = true)
-    public void checkPriceFilters(int minPrice, int maxPrice, int numberOfFilter) throws InterruptedException {
+    public void checkPriceFilters(int minPrice, int maxPrice, int numberOfFilter){
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection("Прага");
         searchHotel.clickCheck_inDate("2019-12-14");
@@ -26,14 +26,15 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterPrice(numberOfFilter);
-//        searchResultsHotelsPage.waitInSeconds(5);  TODO
-        searchResultsHotelsPage.waitUntilElementNoVisible(searchResultsHotelsPage.searchPopupBy);
+        //TODO
+        searchResultsHotelsPage.waitInSeconds(5);
+//        searchResultsHotelsPage.waitUntilElementNoVisible(searchResultsHotelsPage.searchPopupBy);
         List<Integer> pricesList=searchResultsHotelsPage.getPriceOfRooms();
         checkPriceResult(minPrice, maxPrice, pricesList);
     }
 
     @Test (dataProvider ="starsFilter")
-    public void checkStarsFilters(String expactedStar, int numberOfFilter) throws InterruptedException {
+    public void checkStarsFilters(String expactedStar, int numberOfFilter){
         SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
         searchHotel.selectSearchDirection("Прага");
         searchHotel.clickCheck_inDate("2019-12-14");
@@ -57,14 +58,15 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
     @Step
     private void checkPriceResult(int minPrice, int maxPrice, List<Integer> pricesList) {
         for (Integer price:pricesList){
-            Assert.assertTrue(minPrice <= price, "minPrice -" + minPrice + "price - " + price);
-            Assert.assertTrue(maxPrice >= price, "maxPrice -" + minPrice + "price - " + price);
+            Assert.assertTrue(minPrice <= price, "minPrice - " + minPrice + "price - " + price);
+            Assert.assertTrue(maxPrice >= price, "maxPrice - " + minPrice + "price - " + price);
         }
     }
 
     @DataProvider(name ="priceFilter")
     public Object[][] priceFilter() {
         return new Object[][]{
+        //minPrice, maxPrice, indexOfFilter
                 {0, 50, 0},
                 {50, 100,1},
                 {100, 150,2},
@@ -77,6 +79,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
     @DataProvider(name ="starsFilter")
     public Object[][] starsFilter() {
         return new Object[][]{
+        //starts, indexOfFilter
                 {"1", 0},
                 {"2", 1},
                 {"3", 2},
