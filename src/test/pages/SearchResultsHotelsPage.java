@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,10 @@ public class SearchResultsHotelsPage extends BasePage {
     public List<Integer> getPriceOfRooms() {
         List<Integer> pricesList = new ArrayList<>();
         for (WebElement element : priceRoomElementsList) {
-            pricesList.add(Integer.valueOf(element.getText().substring(2).replaceAll("\\s", "")));
+            String priceString = element.getText();
+            if(priceString.length() >2) {
+                pricesList.add(Integer.valueOf(priceString.substring(2).replaceAll("\\s", "")));
+            }else {Assert.assertTrue(false,"priceString - " + priceString);}
         }
         return pricesList;
     }
