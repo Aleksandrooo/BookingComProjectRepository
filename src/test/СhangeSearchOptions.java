@@ -26,14 +26,14 @@ public class СhangeSearchOptions extends  BaseTest {
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
 //        Thread.sleep(5000);
         searchResultsHotelsPage.waitInSeconds(5);
-        screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
+        screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement, webDriver);
         searchResultsHotelsPage.putSearchDirection("Вена");
         searchResultsHotelsPage.setCheckInDay(14);
         searchResultsHotelsPage.setCheckOutDay(16);
         searchResultsHotelsPage.setGroupAdults(3);
         searchResultsHotelsPage.setGroupRooms(3);
         searchResultsHotelsPage.clickSearchButton();
-        screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement);
+        screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement, webDriver);
         checkResult(2,3);
     }
 
