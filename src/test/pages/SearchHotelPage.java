@@ -71,7 +71,9 @@ public class SearchHotelPage extends BasePage {
     public By calendarElement  = new By.ByXPath("(.//*[@class='bui-calendar__date'])[1]");
 
     public void setEurCurrency() {
+        waitElementToBeClickable(selectedCurrencyElement);
         selectedCurrencyElement.click();
+        waitElementToBeClickable(selectEURElement);
         selectEURElement.click();
     }
 
