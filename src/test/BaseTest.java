@@ -18,8 +18,8 @@ public class BaseTest {
     public static final String BASE_APP_URL = "https://www.booking.com/index.uk.html";
 
     WebDriver webDriver;
-//    ScreenshotUtils screen = new ScreenshotUtils(webDriver);
-    ScreenshotUtils screen;
+    ScreenshotUtils screen = new ScreenshotUtils();
+//    ScreenshotUtils screen;
 
     @Step
     @BeforeTest
@@ -42,7 +42,6 @@ public class BaseTest {
         webDriver.get(BASE_APP_URL);
         SearchHotelPage searchHotelPage = new SearchHotelPage(webDriver);
         searchHotelPage.setEurCurrency();
-        screen = new ScreenshotUtils(webDriver);
     }
 
     @Step

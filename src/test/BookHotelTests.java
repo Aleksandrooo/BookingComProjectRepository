@@ -31,7 +31,7 @@ public class BookHotelTests extends BaseTest {
         searchResultsHotelsPage.switchToTab(1);
         SelectedHotelPage selectedHotelPage = new SelectedHotelPage(webDriver);
         selectedHotelPage.setNumberOfRoom(1, 1);
-        screen.makeScreenshotOfElement(selectedHotelPage.roomsAvailabilityElement);
+        screen.makeScreenshotOfElement(selectedHotelPage.roomsAvailabilityElement, webDriver);
         selectedHotelPage.clickBookingButton();
         selectedHotelPage.waitInSeconds(1);
         BCBookPage bcBookPage = new BCBookPage(webDriver);
@@ -39,7 +39,7 @@ public class BookHotelTests extends BaseTest {
         bcBookPage.clickBookButton();
         bcBookPage.closeInfoBox();
         WebElement info = bcBookPage.getAlertError();
-        screen.makeScreenshotOfElement(bcBookPage.mainContentElement);
+        screen.makeScreenshotOfElement(bcBookPage.mainContentElement, webDriver);
         bcBookPage.closeInfoBox();
         Assert.assertEquals(info.getAttribute("data-component"),"bp/top-validation-errors", "bui-alert--error");
     }
