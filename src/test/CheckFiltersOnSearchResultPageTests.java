@@ -26,8 +26,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterPrice(numberOfFilter);
-        //TODO
-        searchResultsHotelsPage.waitInSeconds(6);
+        searchResultsHotelsPage.waitInSeconds(7);
 //        searchResultsHotelsPage.waitUntilElementNoVisible(searchResultsHotelsPage.searchPopupBy);
         List<Integer> pricesList=searchResultsHotelsPage.getPriceOfRooms();
         checkPriceResult(minPrice, maxPrice, pricesList);
@@ -42,8 +41,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterStars(numberOfFilter);
-//        TODO
-        searchResultsHotelsPage.waitInSeconds(6);
+        searchResultsHotelsPage.waitInSeconds(7);
         List<String> starsList=searchResultsHotelsPage.getStarsOfRooms();
         checkStarsResult(expactedStar, starsList);
     }

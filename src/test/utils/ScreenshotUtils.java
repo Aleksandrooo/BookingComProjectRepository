@@ -14,11 +14,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScreenshotUtils {
-//    WebDriver webDriver;
-//
-//    public ScreenshotUtils(WebDriver webDriver){
-//        this.webDriver = webDriver;
-//    }
 
     @Step
     public void makeScreenshotOfElement(WebElement webElement, WebDriver webDriver) {

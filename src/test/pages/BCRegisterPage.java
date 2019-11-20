@@ -6,12 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class BCRegisterPage extends BasePage {
 
-    @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[1]")
-    WebElement registerButtonElement;
-
-    @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[2]")
-    WebElement loginButtonElement;
-
     @FindBy(xpath = ".//*[@class='bui-button bui-button--large bui-button--wide']")
     WebElement submitButtonElement;
 

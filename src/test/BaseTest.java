@@ -19,15 +19,14 @@ public class BaseTest {
 
     WebDriver webDriver;
     ScreenshotUtils screen = new ScreenshotUtils();
-//    ScreenshotUtils screen;
 
     @Step
     @BeforeTest
-    public void setUp(){
+    public void setUp() {
 //        webDriver = new ChromeDriver();
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         try {
-            webDriver = new RemoteWebDriver(new URL("http://10.65.146.65:4444/wd/hub"),capabilities);
+            webDriver = new RemoteWebDriver(new URL("http://10.65.146.65:4444/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -49,6 +48,5 @@ public class BaseTest {
     public void ShutDown() {
         webDriver.quit();
     }
-
 
 }
