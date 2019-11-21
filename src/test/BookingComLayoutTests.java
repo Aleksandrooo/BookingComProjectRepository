@@ -73,8 +73,9 @@ public class BookingComLayoutTests extends BaseTest {
         Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
-        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        searchHotel.clickRegisterButton();
+//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+//        searchHotel.clickRegisterButton();
+        webDriver.get(BaseTest.REGISTER_URL);
         BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
@@ -93,8 +94,9 @@ public class BookingComLayoutTests extends BaseTest {
     @Test
     public void checkSighInLayoutPage(){
         Allure.label("testType", "screenshotDiff");
-        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-        searchHotel.clickSighInButton();
+//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+//        searchHotel.clickSighInButton();
+        webDriver.get(BaseTest.SIGH_IN_URL);
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
 
         AShot aShot = new AShot();
