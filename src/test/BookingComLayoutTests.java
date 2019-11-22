@@ -3,6 +3,7 @@ package test;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
@@ -18,6 +19,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BookingComLayoutTests extends BaseTest {
+
+    @BeforeMethod
+    public void clearCookies(){
+        super.clearCookiesAndSetUaLang();
+    }
 
     @Test
     public void checkLayoutSearchPage(){
@@ -36,7 +42,7 @@ public class BookingComLayoutTests extends BaseTest {
         screen.attachScreenshotToAllureReport(actual, "actual");
         screen.attachScreenshotToAllureReport(expected, "expected");
         screen.attachScreenshotToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 100);
+        Assert.assertTrue(difSize < 300);
     }
 
     @Test
@@ -65,7 +71,7 @@ public class BookingComLayoutTests extends BaseTest {
         screen.attachScreenshotToAllureReport(actual, "actual");
         screen.attachScreenshotToAllureReport(expected, "expected");
         screen.attachScreenshotToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 100);
+        Assert.assertTrue(difSize < 300);
     }
 
     @Test
@@ -73,9 +79,8 @@ public class BookingComLayoutTests extends BaseTest {
         Allure.label("testType", "screenshotDiff");
         AShot aShot = new AShot();
         aShot.coordsProvider(new WebDriverCoordsProvider());
-//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-//        searchHotel.clickRegisterButton();
-        webDriver.get(BaseTest.REGISTER_URL);
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickRegisterButton();
         BCRegisterPage bcRegisterPage = new BCRegisterPage(webDriver);
 
         BufferedImage actual = aShot.takeScreenshot(webDriver, bcRegisterPage.getRegisterPageShotElement()).getImage();
@@ -88,15 +93,14 @@ public class BookingComLayoutTests extends BaseTest {
         screen.attachScreenshotToAllureReport(actual, "actual");
         screen.attachScreenshotToAllureReport(expected, "expected");
         screen.attachScreenshotToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 100);
+        Assert.assertTrue(difSize < 800);
     }
 
     @Test
     public void checkSighInLayoutPage(){
         Allure.label("testType", "screenshotDiff");
-//        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
-//        searchHotel.clickSighInButton();
-        webDriver.get(BaseTest.SIGH_IN_URL);
+        SearchHotelPage searchHotel = new SearchHotelPage(webDriver);
+        searchHotel.clickSighInButton();
         BCSignInPage bcSignInPage = new BCSignInPage(webDriver);
 
         AShot aShot = new AShot();
@@ -111,6 +115,6 @@ public class BookingComLayoutTests extends BaseTest {
         screen.attachScreenshotToAllureReport(actual, "actual");
         screen.attachScreenshotToAllureReport(expected, "expected");
         screen.attachScreenshotToAllureReport(diff, "diff");
-        Assert.assertTrue(difSize < 100);
+        Assert.assertTrue(difSize < 800);
     }
 }
