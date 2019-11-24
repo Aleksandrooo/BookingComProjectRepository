@@ -24,7 +24,6 @@ public class СhangeSearchOptions extends  BaseTest {
         searchHotel.clickCheck_outDate("2019-12-17");
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
-//        Thread.sleep(5000);
         searchResultsHotelsPage.waitInSeconds(7);
         screen.makeScreenshotOfElement(searchResultsHotelsPage.searchBoxElement, webDriver);
         searchResultsHotelsPage.putSearchDirection("Вена");

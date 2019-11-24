@@ -25,6 +25,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.clickCheck_outDate("2019-12-15");
         searchHotel.clickSearchOffersButton();
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
+
         searchResultsHotelsPage.clickChekboxFilterPrice(numberOfFilter);
         searchResultsHotelsPage.waitInSeconds(7);
 //        searchResultsHotelsPage.waitUntilElementNoVisible(searchResultsHotelsPage.searchPopupBy);
@@ -39,6 +40,7 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
         searchHotel.clickCheck_inDate("2019-12-14");
         searchHotel.clickCheck_outDate("2019-12-16");
         searchHotel.clickSearchOffersButton();
+        searchHotel.waitInSeconds(7);
         SearchResultsHotelsPage searchResultsHotelsPage = new SearchResultsHotelsPage(webDriver);
         searchResultsHotelsPage.clickChekboxFilterStars(numberOfFilter);
         searchResultsHotelsPage.waitInSeconds(7);

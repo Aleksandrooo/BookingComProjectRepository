@@ -30,6 +30,7 @@ public class BasePage {
     public void waitElementToBeClickable(By by){
         WebDriverWait wait = new WebDriverWait(webDriver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(by));
+
     }
 
     public void waitElementToBeClickable(WebElement webElement){

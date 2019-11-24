@@ -18,7 +18,7 @@ public class SearchHotelPage extends BasePage {
     @FindBy(xpath = ".//input[@id='ss']")
     public WebElement searchInputElement;
 
-    @FindBy(xpath = ".//*[@class='search_hl_name']")
+    @FindBy(xpath = ".//li[@data-i='0']")
     public WebElement selectSearchDirectionElement;
 
     public WebElement check_inElement;
@@ -29,7 +29,6 @@ public class SearchHotelPage extends BasePage {
     public WebElement searchOffersButtonElement;
 
     @FindBy(xpath = ".//*[@id='current_account_create']")
-//    @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[1]")
     public WebElement registerButtonElement;
 
     @FindBy(xpath = "(.//*[@class='sign_in_wrapper'])[2]")
@@ -90,7 +89,6 @@ public class SearchHotelPage extends BasePage {
         searchInputElement.clear();
         searchInputElement.sendKeys(value);
         waitElementToBeClickable(selectSearchDirectionElement);
-//        waitElementToBeClickable(listOfDirectionElement);
         selectSearchDirectionElement.click();
     }
 
