@@ -28,7 +28,6 @@ public class CheckFiltersOnSearchResultPageTests extends BaseTest {
 
         searchResultsHotelsPage.clickChekboxFilterPrice(numberOfFilter);
         searchResultsHotelsPage.waitInSeconds(7);
-//        searchResultsHotelsPage.waitUntilElementNoVisible(searchResultsHotelsPage.searchPopupBy);
         List<Integer> pricesList=searchResultsHotelsPage.getPriceOfRooms();
         checkPriceResult(minPrice, maxPrice, pricesList);
     }

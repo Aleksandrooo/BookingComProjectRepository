@@ -11,11 +11,9 @@ public class SelectedHotelPage extends BasePage{
 
     @FindBy(xpath = ".//select[@class='hprt-nos-select']")
     public List<WebElement> numberOfRoomElement;
-//    public WebElement numberOfRoomElement;
 
     @FindBy(xpath = ".//*[@class='hprt-reservation-cta']")
     public WebElement bookingButtonElement;
-//    public List<WebElement> bookingButtonElement;
 
     @FindBy(xpath = ".//*[@id='hp_availability_style_changes']")
     public WebElement roomsAvailabilityElement;
