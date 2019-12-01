@@ -39,6 +39,7 @@ public class BookHotelTests extends BaseTest {
         bcBookPage.clickBookButton();
         bcBookPage.closeInfoBox();
         WebElement info = bcBookPage.getAlertError();
+        bcBookPage.closeInfoBox();
         screen.makeScreenshotOfElement(bcBookPage.mainContentElement, webDriver);
         bcBookPage.closeInfoBox();
         Assert.assertEquals(info.getAttribute("data-component"),"bp/top-validation-errors", "bui-alert--error");
