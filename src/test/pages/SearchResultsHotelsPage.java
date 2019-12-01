@@ -111,14 +111,14 @@ public class SearchResultsHotelsPage extends BasePage {
     public void setCheckInDay(int checkInDay) {
         checkInDayElement.click();
         waitInSeconds(1);
-        WebElement setValueCheckInDayElement = webDriver.findElement(By.xpath("(.//*[@class='c2-day-inner' and text()=\"" + checkInDay + "\"])[3]"));
+        WebElement setValueCheckInDayElement = webDriver.findElement(By.xpath("(.//*[@class='c2-day-inner' and text()=\"" + checkInDay + "\"])[1]"));
         setValueCheckInDayElement.click();
     }
 
     public void setCheckOutDay(int checkOutDay) {
         checkOutDayElement.click();
         waitInSeconds(1);
-        WebElement setValueCheckOutDayElement = webDriver.findElement(By.xpath("(.//*[@class='c2-day-inner' and text()=\"" + checkOutDay + "\"])[19]"));
+        WebElement setValueCheckOutDayElement = webDriver.findElement(By.xpath("(.//*[@class='c2-day-inner' and text()=\"" + checkOutDay + "\"])[17]"));
         setValueCheckOutDayElement.click();
     }
 
